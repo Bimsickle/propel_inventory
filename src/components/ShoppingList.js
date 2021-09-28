@@ -2,6 +2,12 @@ import React, { useState } from "react";
 
 export default function ShoppingList() {
   let [shoppingItem, setShoppingItem] = useState(null);
+  let shoppingProducts = [
+    "Fish fingers",
+    "Sausages",
+    "Smoked Salmon",
+    "Prawns",
+  ];
   function addShoppingItem(event) {
     event.preventDefault();
     alert(`${shoppingItem} added to your Shopping List!`);
@@ -13,12 +19,23 @@ export default function ShoppingList() {
   }
   return (
     <div className="ShoppingList">
-      <ul>
-        <li>Fish fingers</li>
-        <li>Sausages</li>
-        <li>Smoked salmon</li>
-        <li>Prawns</li>
-      </ul>
+      <table>
+        <caption>Shopping List</caption>
+        <thead>
+          <tr>
+            <th>Name of the item</th>
+          </tr>
+        </thead>
+        <tbody>
+          {shoppingProducts.map(function (shoppingProduct, index) {
+            return (
+              <tr key={index}>
+                <td>{shoppingProduct}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
       <form onSubmit={addShoppingItem}>
         <input
           type="search"
