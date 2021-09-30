@@ -7,7 +7,7 @@ export default function ShoppingList() {
     { name: "Smoked Salmon", quantity: 2, isSelected: false },
     { name: "Prawns", quantity: 4, isSelected: false },
   ]);
-  let [inputValue, setInputValue] = useState(" ");
+  let [inputValue, setInputValue] = useState("");
 
   function addShoppingItem(event) {
     event.preventDefault();
@@ -15,12 +15,20 @@ export default function ShoppingList() {
     let newItems = [...shoppingProducts, newItem];
     console.log(newItems);
     setShoppingProducts(newItems);
+    setInputValue("");
   }
 
   function handleShoppingItemChange(event) {
     event.preventDefault();
     setInputValue(event.target.value);
   }
+
+  let itemComplete = (index) => {
+    let newItems = [...shoppingProducts];
+    newItems[index].isSelected = !newItems[index].isSelected;
+    setShoppingProducts(newItems);
+  };
+
   return (
     <div className="ShoppingList">
       <table>
@@ -36,7 +44,7 @@ export default function ShoppingList() {
               <tr key={index}>
                 <td>{shoppingProduct.quantity}</td>
                 <td>{shoppingProduct.name}</td>
-                <td>
+                <td onClick={() => itemComplete(index)}>
                   {shoppingProduct.isSelected ? (
                     <span>✔️</span>
                   ) : (
