@@ -5,28 +5,38 @@ import ItemList from "./ItemList";
 export default function InventoryList() {
   let [loaded, setLoaded] = useState(false);
   let [item, setItem] = useState("null");
-  let products = [
+  let [products, setProducts] = useState([
     { name: "Apples", expire: "12/05", quantity: 1, location: "fridge" },
     { name: "Bananas", expire: "02/05", quantity: 3, location: "cabinet" },
     { name: "Oranges", expire: "03/03", quantity: 10, location: "cabinet" },
     { name: "Grapes", expire: "04/02", quantity: 4, location: "fridge" },
     { name: "Melon", expire: "23/06", quantity: 5, location: "fridge" },
     { name: "Berries", expire: "23/04", quantity: 2, location: "fridge" },
-  ];
+  ]);
+  let [inputValue, setInputValue] = useState("");
+
+  function addItem(event) {
+    event.preventDefault();
+    let newItem = {
+      name: inputValue,
+      expire: "12/02",
+      quantity: 1,
+      location: "cabinet",
+    };
+    let newItems = [...products, newItem];
+    console.log(newItems);
+    setProducts(newItems);
+    setInputValue("");
+  }
 
   function sortExpiry(event) {
     event.preventDefault();
     alert("Hello from sortExpiry");
   }
 
-  function addItem(event) {
-    event.preventDefault();
-    alert(`${item} added to inventory!`);
-  }
-
   function handleItemChange(event) {
     event.preventDefault();
-    setItem(event.target.value);
+    setInputValue(event.target.value);
   }
 
   return (
@@ -63,6 +73,7 @@ export default function InventoryList() {
         />
       </form>
 
+      <button className="btn btn-primary">Scan barcode</button>
       <div>Sort inventory by:</div>
       <button onClick={sortExpiry}>Expiry date</button>
       <button>Items low in stock</button>
