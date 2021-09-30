@@ -33,6 +33,14 @@ export default function InventoryList() {
     event.preventDefault();
     alert("Hello from sortExpiry");
   }
+  function sortQuantity(event) {
+    event.preventDefault();
+    alert("Hello from sortQuantity");
+  }
+  function sortLocation(event) {
+    event.preventDefault();
+    alert("Hello from sortLocation");
+  }
 
   function handleItemChange(event) {
     event.preventDefault();
@@ -76,8 +84,8 @@ export default function InventoryList() {
       <button className="btn btn-primary">Scan barcode</button>
       <div>Sort inventory by:</div>
       <button onClick={sortExpiry}>Expiry date</button>
-      <button>Items low in stock</button>
-      <button>Items by location</button>
+      <button onClick={sortQuantity}>Items low in stock</button>
+      <button onClick={sortLocation}>Items by location</button>
     </div>
   );
 }
