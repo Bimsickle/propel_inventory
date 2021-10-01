@@ -8,6 +8,7 @@ export default function ShoppingList() {
     { name: "Prawns", quantity: 4, isSelected: false },
   ]);
   let [inputValue, setInputValue] = useState("");
+  let [totalItemCount, setTotalItemCount] = useState("");
 
   function addShoppingItem(event) {
     event.preventDefault();
@@ -29,12 +30,35 @@ export default function ShoppingList() {
     setShoppingProducts(newItems);
   };
 
+  let handleQuantityIncrease = (index) => {
+    let newItems = [...shoppingProducts];
+    newItems[index].quantity++;
+    setShoppingProducts(newItems);
+    calculateTotal();
+  };
+
+  let handleQuantityDecrease = (index) => {
+    let newItems = [...shoppingProducts];
+    newItems[index].quantity--;
+    setShoppingProducts(newItems);
+    calculateTotal();
+  };
+
+  let calculateTotal = () => {
+    let totalItemCount = shoppingProducts.reduce((total, item) => {
+      return total + item.quantity;
+    }, 0);
+
+    setTotalItemCount(totalItemCount);
+  };
+
   return (
     <div className="ShoppingList">
       <table>
         <caption>Shopping List</caption>
         <thead>
           <tr>
+            <th>Quantity</th>
             <th>Name of the item</th>
           </tr>
         </thead>
@@ -42,7 +66,11 @@ export default function ShoppingList() {
           {shoppingProducts.map(function (shoppingProduct, index) {
             return (
               <tr key={index}>
-                <td>{shoppingProduct.quantity}</td>
+                <td>
+                  <span onClick={() => handleQuantityDecrease(index)}>➖</span>
+                  {shoppingProduct.quantity}
+                  <span onClick={() => handleQuantityIncrease(index)}>➕</span>
+                </td>
                 <td>{shoppingProduct.name}</td>
                 <td onClick={() => itemComplete(index)}>
                   {shoppingProduct.isSelected ? (
@@ -54,6 +82,9 @@ export default function ShoppingList() {
               </tr>
             );
           })}
+          <th>
+            Total: <span>{totalItemCount}</span>
+          </th>
         </tbody>
       </table>
       <form onSubmit={addShoppingItem}>
