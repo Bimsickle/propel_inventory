@@ -11,6 +11,9 @@ export default function HomepageNav() {
         <Link to="/inventory-list"> Inventory List </Link>
       </div>
       <div>
+        <Link to="/item-list"> Item List </Link>
+      </div>
+      <div>
         <Link to="/"> Homepage</Link>
       </div>
     </div>

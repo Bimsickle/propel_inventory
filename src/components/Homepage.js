@@ -13,6 +13,7 @@ export default function Homepage() {
       <HomepageNav />
       <Route exact path="/shopping-list" component={ShoppingList} />
       <Route exact path="/inventory-list" component={InventoryList} />
+      <Route exact path="/item-list" component={ItemList} />
     </div>
   );
 }
