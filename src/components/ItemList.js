@@ -25,6 +25,7 @@ export default function ItemList() {
     setDescription(response.data.product.product_name);
     setIngridients(response.data.product.ingredients_text);
     setAllergy(response.data.product.allergens_from_ingredients);
+    setSize(response.data.product.serving_size);
 
     console.log(response);
   }
@@ -40,8 +41,9 @@ export default function ItemList() {
         <thead>
           <tr>
             <th>Name</th>
-            <th>Image</th>
             <th>Barcode</th>
+            <th>Image</th>
+
             <th>Description</th>
             <th>Size</th>
             <th>Ingridients</th>
@@ -49,15 +51,17 @@ export default function ItemList() {
           </tr>
         </thead>
         <tbody>
-          <td>{item}</td>
-          <td>{barcode}</td>
-          <td>
-            <img src={image} />
-          </td>
-          <td>{description}</td>
-          <td>{size}</td>
-          <td>{ingridients}</td>
-          <td>{allergy}</td>
+          <tr>
+            <td>{item}</td>
+            <td>{barcode}</td>
+            <td>
+              <img src={image} />
+            </td>
+            <td>{description}</td>
+            <td>{size}</td>
+            <td>{ingridients}</td>
+            <td>{allergy}</td>
+          </tr>
         </tbody>
       </table>
 
