@@ -1,0 +1,8 @@
+.App {
+  font-family: "Roboto", sans-serif;
+  max-width: 360px;
+}
+
+.App section {
+  padding: 10px;
+}

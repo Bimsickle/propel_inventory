@@ -1,0 +1,24 @@
+.item-slot {
+  padding-top: 7px;
+  padding-left: 40px;
+}
+
+.product-name {
+  font-size: 12px;
+  line-height: 14.06px;
+}
+
+.quantity {
+  font-size: 10px;
+  line-height: 11.72px;
+  color: #c4c4c4;
+}
+
+.details-icon {
+  padding-right: 41px;
+}
+
+.sorting {
+  font-size: 12px;
+  line-height: 14.06px;
+}
