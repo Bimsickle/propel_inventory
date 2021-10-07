@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./ShoppingList.css";
 
 export default function ShoppingList() {
   let [shoppingProducts, setShoppingProducts] = useState([
@@ -54,56 +55,39 @@ export default function ShoppingList() {
 
   return (
     <div className="ShoppingList">
-      <table>
-        <caption>Shopping List</caption>
-        <thead>
-          <tr>
-            <th>Quantity</th>
-            <th>Name of the item</th>
-          </tr>
-        </thead>
-        <tbody>
-          {shoppingProducts.map(function (shoppingProduct, index) {
-            return (
-              <tr key={index}>
-                <td>
-                  <span onClick={() => handleQuantityDecrease(index)}>➖</span>
-                  {shoppingProduct.quantity}
-                  <span onClick={() => handleQuantityIncrease(index)}>➕</span>
-                </td>
-                <td>{shoppingProduct.name}</td>
-                <td onClick={() => itemComplete(index)}>
-                  {shoppingProduct.isSelected ? (
-                    <span>✔️</span>
-                  ) : (
-                    <span>❌</span>
-                  )}
-                </td>
-              </tr>
-            );
-          })}
-          <th>
-            Total: <span>{totalItemCount}</span>
-          </th>
-        </tbody>
-      </table>
-      <form onSubmit={addShoppingItem}>
-        <input
-          type="search"
-          id="search-form"
-          value={inputValue}
-          onChange={handleShoppingItemChange}
-        />
-        <input
-          type="submit"
-          value="Add item to shopping list"
-          className="btn btn-primary"
-        />
-      </form>
-
-      <button className="btn btn-primary">Scan Barcode</button>
-      <br />
-      <button className="btn btn-primary">Add from Inventory list</button>
+      <div className="text-end sorting">
+        Sort by:{" "}
+        <span>
+          Location{" "}
+          <i class="material-icons-outlined filter-icon">keyboard_arrow_down</i>
+        </span>
+      </div>
+      <div className="ps-3">
+        <strong>Pantry</strong>
+      </div>
+      {shoppingProducts.map(function (shoppingProduct, index) {
+        return (
+          <div key={index} className="item-slot row">
+            <div className="col-6">
+              <div className="product-name">{shoppingProduct.name}</div>
+              <div className="quantity">Qty {shoppingProduct.quantity}</div>
+            </div>
+            <div className="col-6 text-end">
+              <div onClick={() => itemComplete(index)}>
+                {shoppingProduct.isSelected ? (
+                  <span class="material-icons-outlined details-icon">
+                    check_box
+                  </span>
+                ) : (
+                  <span class="material-icons-outlined details-icon">
+                    check_box_outline_blank
+                  </span>
+                )}
+              </div>
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 }
