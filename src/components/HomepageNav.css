@@ -15,3 +15,12 @@
   line-height: 16px;
   margin: 0 auto;
 }
+
+.nav-icon {
+  font-size: 20px;
+}
+
+.add-item-nav {
+  position: absolute;
+  left: 155px;
+}

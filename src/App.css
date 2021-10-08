@@ -1,6 +1,7 @@
 .App {
   font-family: "Roboto", sans-serif;
   max-width: 360px;
+  max-height: 500px;
 }
 
 .App section {

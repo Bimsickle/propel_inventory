@@ -21,4 +21,9 @@
 .sorting {
   font-size: 12px;
   line-height: 14.06px;
+  padding-top: 9px;
+}
+
+.dropdown {
+  border: none;
 }

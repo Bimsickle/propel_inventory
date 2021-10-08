@@ -8,31 +8,28 @@ export default function HomepageNav() {
       <div className="NavBar">
         <div className="row">
           <div className="col-2 nav-elements">
-            <i className="material-icons-outlined">home</i>
+            <i className="material-icons-outlined nav-icon">home</i>
             Home
           </div>
           <div className="col-2 nav-elements">
-            <i className="material-icons-outlined">list_alt</i>List
-          </div>
-          <div className="col-2 nav-elements">
-            <i className="material-icons-outlined">add_circle_outline</i>
+            <i className="material-icons-outlined nav-icon">list_alt</i>
             <br />
-            Add Item
+            List
           </div>
           <div className="col-2 nav-elements">
-            <i className="material-icons-outlined">notifications</i>Alerts
+            <i className="material-icons-outlined nav-icon">
+              add_circle_outline
+            </i>
+            <div className="add-item-nav">Add Item</div>
           </div>
           <div className="col-2 nav-elements">
-            <i className="material-icons-outlined">search</i>Search
+            <i className="material-icons-outlined nav-icon">notifications</i>
+            Alerts
+          </div>
+          <div className="col-2 nav-elements">
+            <i className="material-icons-outlined nav-icon">search</i>Search
           </div>
         </div>
-      </div>
-
-      <div>
-        <Link to="/shopping-list"> Shopping List </Link>
-      </div>
-      <div>
-        <Link to="/inventory-list"> Inventory List </Link>
       </div>
     </div>
   );

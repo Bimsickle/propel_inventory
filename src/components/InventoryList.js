@@ -51,11 +51,12 @@ export default function InventoryList() {
   return (
     <div className="InventoryList">
       <div className="text-end sorting">
-        Sort by:{" "}
-        <span>
-          Location{" "}
-          <i class="material-icons-outlined filter-icon">keyboard_arrow_down</i>
-        </span>
+        <label for="location"> Sort by:</label>
+        <select name="location" className="dropdown">
+          <option value="location">Location</option>
+          <option value="expiration date">Expiration Date</option>
+          <option value="low in stock">Low in Stock</option>
+        </select>
       </div>
       <div>
         <div className="ps-3">

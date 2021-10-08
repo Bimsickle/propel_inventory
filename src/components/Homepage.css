@@ -1,4 +1,7 @@
-.Homepage a {
+a {
+  text-decoration: none;
+}
+.Homepage .homepage-button {
   text-align: center;
   border-radius: 4px;
   text-decoration: none;
@@ -9,13 +12,16 @@
 }
 .buttons {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
 }
 
-a:hover {
-  color: inherit;
+div.active:hover {
+  color: white;
 }
 
+div.inactive:hover {
+  color: #c4c4c4;
+}
 .active {
   background-color: #c4c4c4;
   color: white;
