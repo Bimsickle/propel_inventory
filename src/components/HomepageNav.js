@@ -17,9 +17,7 @@ export default function HomepageNav() {
             List
           </div>
           <div className="col-2 nav-elements">
-            <i className="material-icons-outlined nav-icon">
-              add_circle_outline
-            </i>
+            <i className="material-icons-outlined nav-icon">add_circle</i>
             <div className="add-item-nav">Add Item</div>
           </div>
           <div className="col-2 nav-elements">

@@ -15,6 +15,12 @@ export default function InventoryList() {
     { name: "Berries", expire: "23/04", quantity: 2, location: "fridge" },
   ]);
   let [inputValue, setInputValue] = useState("");
+  let [ShowComment, setShowModelComment] = useState(false);
+  let [animateModal, setanimateModal] = useState(false);
+
+  function showItemDetails() {
+    alert("Hello");
+  }
 
   function addItem(event) {
     event.preventDefault();
@@ -70,7 +76,12 @@ export default function InventoryList() {
                 <div className="quantity">Qty {product.quantity}</div>
               </div>
               <div className="col-6 text-end details-icon">
-                <i className="material-icons-outlined">chevron_right</i>
+                <i
+                  className="material-icons-outlined"
+                  onClick={showItemDetails}
+                >
+                  chevron_right
+                </i>
               </div>
             </div>
           );

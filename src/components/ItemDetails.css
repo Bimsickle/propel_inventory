@@ -1,0 +1,49 @@
+.ItemDetails {
+  text-align: center;
+}
+
+.item-details-form {
+  border: 1px solid #979797;
+  border-radius: 5px;
+  font-size: 12px;
+  color: #c4c4c4;
+  margin: 8px auto;
+  height: 33px;
+  left: 37px;
+  top: 243px;
+  padding: 7px;
+}
+
+.bin-icon {
+  color: #c4c4c4;
+}
+
+.item-name {
+  width: 289px;
+  text-align: start;
+}
+
+.item-picture {
+  width: 142px;
+  height: 142px;
+  object-fit: cover;
+  border: 1px solid #979797;
+}
+
+.quantity {
+  width: 80px;
+}
+
+.bin-icon {
+  margin: 0 85px;
+}
+
+.Add-shopping-list {
+  font-size: 12px;
+  color: #979797;
+}
+
+.add-shopping-list-icon {
+  color: #979797;
+  font-size: 35px;
+}
