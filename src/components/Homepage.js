@@ -14,6 +14,8 @@ export default function Homepage() {
       <Route exact path="/shopping-list" component={ShoppingList} />
       <Route exact path="/inventory-list" component={InventoryList} />
       <Route exact path="/item-list" component={ItemList} />
+
+      <ItemDetails />
     </div>
   );
 }
