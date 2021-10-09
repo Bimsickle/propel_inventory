@@ -1,0 +1,27 @@
+.NavBar {
+  width: 360px;
+  height: 56px;
+  left: 0px;
+  top: 584px;
+  background: #c4c4c4;
+  padding-top: 7px;
+  position: fixed;
+}
+
+.nav-elements {
+  color: white;
+  text-align: center;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  margin: 0 auto;
+}
+
+.nav-icon {
+  font-size: 20px;
+}
+
+.add-item-nav {
+  position: absolute;
+  left: 155px;
+}

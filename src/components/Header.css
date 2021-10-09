@@ -1,0 +1,22 @@
+.Header {
+  width: 361px;
+  height: 56px;
+  left: 0px;
+  top: 24px;
+  background-color: #c4c4c4;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.App-name {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  color: white;
+  padding: 16px;
+}
+
+.setting-icon {
+  padding-left: 120px;
+}
