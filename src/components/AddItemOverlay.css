@@ -1,0 +1,31 @@
+.past-items {
+  color: #979797;
+}
+
+.past-item-block {
+  padding-left: 32px;
+  font-size: 12px;
+}
+
+.past-items-list {
+  margin-top: 33px;
+}
+.add-item-icon {
+  color: #979797;
+  padding: 8px;
+}
+
+.add-item {
+  width: 201px;
+  height: 33px;
+  top: 100px;
+  left: 79px;
+}
+
+.add-quantity {
+  width: 91px;
+  height: 33px;
+  top: 140px;
+  left: 79px;
+  margin-left: 90px;
+}

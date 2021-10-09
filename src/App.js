@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Link } from "react-router-dom";
 import HomepageNav from "./components/HomepageNav";
 import Header from "./components/Header";
 import ItemDetails from "./components/ItemDetails";
+import AddItemOverlay from "./components/AddItemOverlay";
 
 function App() {
   return (
