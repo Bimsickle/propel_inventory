@@ -13,10 +13,6 @@ export default function InventoryList() {
     { name: "Grapes", expire: "04/02", quantity: 4, location: "fridge" },
     { name: "Melon", expire: "23/06", quantity: 5, location: "fridge" },
     { name: "Berries", expire: "23/04", quantity: 2, location: "fridge" },
-    { name: "Berries", expire: "23/04", quantity: 2, location: "fridge" },
-    { name: "Berries", expire: "23/04", quantity: 2, location: "fridge" },
-    { name: "Berries", expire: "23/04", quantity: 2, location: "fridge" },
-    { name: "Berries", expire: "23/04", quantity: 2, location: "fridge" },
   ]);
   let [inputValue, setInputValue] = useState("");
 
