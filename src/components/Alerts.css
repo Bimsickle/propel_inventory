@@ -1,0 +1,19 @@
+.alert-number {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.alert-header {
+  padding-top: 38px;
+  padding-bottom: 18px;
+}
+
+.expire {
+  font-size: 12px;
+}
+
+.Alerts .item-slot {
+  padding-bottom: 8px;
+  padding-top: 8px;
+}
