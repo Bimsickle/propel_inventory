@@ -20,6 +20,7 @@ export default function Alerts() {
       <div className="text-center alert-header">
         You have <span className="alert-number">3</span> items expiring soon!
       </div>
+
       {products.map(function (product, index) {
         return (
           <div key={index} className="item-slot row">

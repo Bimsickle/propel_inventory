@@ -22,6 +22,7 @@ function App() {
         <Route exact path="/add-item" component={AddItemOverlay} />
         <Route exact path="/alerts" component={Alerts} />
         <Route exact path="/search" component={Search} />
+        <Route exact path="/item-details" component={ItemDetails} />
         <HomepageNav />
       </div>
     </BrowserRouter>

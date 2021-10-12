@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import ItemList from "./ItemList";
 import "./InventoryList.css";
+import { Link } from "react-router-dom";
 
 export default function InventoryList() {
   let [loaded, setLoaded] = useState(false);
@@ -76,12 +77,9 @@ export default function InventoryList() {
                 <div className="quantity">Qty {product.quantity}</div>
               </div>
               <div className="col-6 text-end details-icon">
-                <i
-                  className="material-icons-outlined"
-                  onClick={showItemDetails}
-                >
-                  chevron_right
-                </i>
+                <Link to="/item-details">
+                  <i className="material-icons-outlined">chevron_right</i>
+                </Link>
               </div>
             </div>
           );
@@ -98,7 +96,9 @@ export default function InventoryList() {
               <div className="quantity">Qty {product.quantity}</div>
             </div>
             <div className="col-6 text-end details-icon">
-              <i className="material-icons-outlined">chevron_right</i>
+              <Link to="/item-details">
+                <i className="material-icons-outlined">chevron_right</i>
+              </Link>
             </div>
           </div>
         );
