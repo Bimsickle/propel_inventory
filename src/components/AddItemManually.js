@@ -14,7 +14,7 @@ export default function AddItemManually() {
   let [quantity, setQuantity] = useState(1);
   let [date, setDate] = useState("MM/DD/YYYY");
   return (
-    <div className="AddItemManually">
+    <div className="AddItemManually pt-3">
       <div className="image-container">
         <i class="material-icons-outlined add-photo-icon">add_a_photo</i>
         <div className="image-text">Add photos</div>

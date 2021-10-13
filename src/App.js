@@ -12,6 +12,8 @@ import InventoryList from "./components/InventoryList";
 import ShoppingList from "./components/ShoppingList";
 import Search from "./components/Search";
 import BarcodeScanner from "./components/BarcodeScanner";
+import AddItemPopUp from "./components/AddItemPopUp";
+import ChooseInput from "./components/ChooseInput";
 
 function App() {
   return (
@@ -20,10 +22,13 @@ function App() {
         <Header />
         <Route exact path="/" component={Homepage} />
         <Route exact path="/shopping-list" component={ShoppingList} />
-        <Route exact path="/add-item" component={AddItemOverlay} />
+        <Route exact path="/add-item" component={AddItemPopUp} />
         <Route exact path="/alerts" component={Alerts} />
         <Route exact path="/search" component={Search} />
         <Route exact path="/item-details" component={ItemDetails} />
+        <Route exact path="/choose-input" component={ChooseInput} />
+        <Route exact path="/barcode" component={BarcodeScanner} />
+        <Route exact path="/add-manually" component={AddItemManually} />
         <HomepageNav />
       </div>
     </BrowserRouter>
