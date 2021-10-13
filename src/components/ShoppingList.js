@@ -55,13 +55,8 @@ export default function ShoppingList() {
 
   return (
     <div className="ShoppingList">
-      <div className="text-end sorting">
-        <label for="location"> Sort by:</label>
-        <select name="location" className="dropdown">
-          <option value="location">Location</option>
-          <option value="expiration date">Expiration Date</option>
-          <option value="low in stock">Low in Stock</option>
-        </select>
+      <div className="text-end p-3">
+        <strong>Purchased</strong>
       </div>
       <div></div>
       <div className="ps-3">

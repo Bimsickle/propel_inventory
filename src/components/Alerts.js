@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Alerts.css";
+import { Link } from "react-router-dom";
 
 export default function Alerts() {
   let [products, setProducts] = useState([
@@ -10,10 +11,6 @@ export default function Alerts() {
     { name: "Melon", expire: "23/06", quantity: 5, location: "fridge" },
     { name: "Berries", expire: "23/04", quantity: 2, location: "fridge" },
   ]);
-
-  function showItemDetails() {
-    alert("Hello");
-  }
 
   return (
     <div className="Alerts">
@@ -31,12 +28,9 @@ export default function Alerts() {
             <div className="col-4 expire">Expires {product.expire}</div>
 
             <div className="col-4 text-end details-icon">
-              <i
-                className="material-icons-outlined me-4"
-                onClick={showItemDetails}
-              >
-                chevron_right
-              </i>
+              <Link to="/item-details">
+                <i className="material-icons-outlined">chevron_right</i>
+              </Link>
             </div>
             <hr />
           </div>

@@ -1,0 +1,22 @@
+.BarcodeScanner {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.webcam-scanner {
+  border: 1px solid black;
+}
+
+.barcode-info {
+  font-size: 14px;
+}
+
+.barcode-button {
+  text-align: center;
+  border-radius: 4px;
+  text-decoration: none;
+  margin: 0 auto;
+  width: 135px;
+  height: 36px;
+  padding: 6px 6px 6px 8px;
+}

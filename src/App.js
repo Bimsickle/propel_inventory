@@ -11,6 +11,7 @@ import Alerts from "./components/Alerts";
 import InventoryList from "./components/InventoryList";
 import ShoppingList from "./components/ShoppingList";
 import Search from "./components/Search";
+import BarcodeScanner from "./components/BarcodeScanner";
 
 function App() {
   return (
