@@ -1,12 +1,14 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from model import Todo, Inventory
+from model import Inventory
 
 app = FastAPI()
 
 from database import (
     fetch_all_items,
     create_item,
+    fetch_all_items_sum,
+    fetch_all_items_location
 )
 
 origins = ['https://localhost:3000']
@@ -23,9 +25,19 @@ app.add_middleware(
 def home():
     return {"Data":"Test"}
 
-@app.get("/api/todo")
+@app.get("/api/item")
 async def get_items():
     response = await fetch_all_items()
+    return response
+
+@app.get("/api/item/sum")
+async def get_items_sum():
+    response = await fetch_all_items_sum()
+    return response
+
+@app.get("/api/item/location")
+async def get_items_location():
+    response = await fetch_all_items_location()
     return response
 
 @app.post("/api/item/", response_model=Inventory)

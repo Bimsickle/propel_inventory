@@ -14,7 +14,3 @@ class Inventory(BaseModel):
     quantity: int 
     exp_date: Optional[datetime] = None
     location: Optional[str] = None
-
-class Todo(BaseModel):
-    title: str
-    description: str
