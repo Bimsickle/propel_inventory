@@ -4,17 +4,17 @@ from pydantic import BaseModel
 
 class Item(BaseModel):
     name: str
-    code: str
-    description: str
-    size: str
-    ingredients: str
+    code: Optional[str] = None
+    description: Optional[str] = None
+    size: Optional[str] = None
+    ingredients: Optional[str] = None
     allergy_info: Optional[str] = None
-
-class Location(BaseModel):
-    name: str 
-
 class Inventory(BaseModel):
     item: Item
     quantity: int 
-    exp_date: date
-    location: Location
+    exp_date: Optional[datetime] = None
+    location: Optional[str] = None
+
+class Todo(BaseModel):
+    title: str
+    description: str
