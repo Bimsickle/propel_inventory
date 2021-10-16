@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./ChooseInput.css";
 
 export default function ChooseInput() {
   return (
@@ -12,10 +13,22 @@ export default function ChooseInput() {
       <div className="main-text">How would you like to add your item?</div>
       <div className="buttons mt-3">
         <Link to="/barcode">
-          <div>Scan Barcode</div>
+          <div className="icon-container">
+            <i class="material-icons-outlined">photo_camera</i>
+            <div>
+              Scan <br />
+              Barcode
+            </div>
+          </div>
         </Link>
         <Link to="/add-manually">
-          <div>Enter Manually</div>
+          <div className="icon-container">
+            <i class="material-icons-outlined">keyboard</i>
+            <div>
+              Enter
+              <br /> Manually
+            </div>
+          </div>
         </Link>
       </div>
     </div>

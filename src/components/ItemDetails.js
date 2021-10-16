@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./ItemDetails.css";
 
-export default function ItemDetails() {
+export default function ItemDetails(props) {
+  let product = props.product;
   let [inputValue, setInputValue] = useState("");
   let barcode = "737628064502";
   let apiUrl = `https://world.openfoodfacts.org/api/v0/product/${barcode}.json`;
@@ -14,6 +15,7 @@ export default function ItemDetails() {
   let [allergy, setAllergy] = useState("");
   let [quantity, setQuantity] = useState(1);
   let [date, setDate] = useState("MM/DD/YYYY");
+  console.log(props.item);
 
   function searchItem(event) {
     event.preventDefault();

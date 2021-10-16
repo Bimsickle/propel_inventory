@@ -3,7 +3,7 @@
   height: 56px;
   left: 0px;
   top: 584px;
-  background: #c4c4c4;
+  background: var(--navigation-color);
   padding-top: 7px;
 }
 
