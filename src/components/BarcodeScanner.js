@@ -3,7 +3,7 @@ import "./BarcodeScanner.css";
 import { Link } from "react-router-dom";
 
 export default function BarcodeScanner() {
-  let [playing, setPlaying] = useState("false");
+  let [playing, setPlaying] = useState(false);
   let height = 200;
   let width = 200;
 
@@ -54,7 +54,6 @@ export default function BarcodeScanner() {
       </div>
       <div className="buttons mt-3">
         <div className="active barcode-button">SCAN</div>
-
         <div className="inactive barcode-button">CANCEL</div>
       </div>
     </div>

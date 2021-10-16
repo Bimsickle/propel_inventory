@@ -13,6 +13,7 @@ export default function AddItemManually() {
   let [allergy, setAllergy] = useState("");
   let [quantity, setQuantity] = useState(1);
   let [date, setDate] = useState("MM/DD/YYYY");
+
   return (
     <div className="AddItemManually pt-3">
       <div className="image-container">

@@ -14,8 +14,11 @@ import Search from "./components/Search";
 import BarcodeScanner from "./components/BarcodeScanner";
 import AddItemPopUp from "./components/AddItemPopUp";
 import ChooseInput from "./components/ChooseInput";
+import axios from "axios";
 
 function App() {
+  axios.get("http://localhost:8000/api/item").then(console.log);
+
   return (
     <BrowserRouter>
       <div className="App">
