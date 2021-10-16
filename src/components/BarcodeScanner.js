@@ -1,61 +1,36 @@
 import React, { useState } from "react";
 import "./BarcodeScanner.css";
 import { Link } from "react-router-dom";
+import BarcodeScannerComponent from "react-webcam-barcode-scanner";
+import axios from "axios";
 
 export default function BarcodeScanner() {
-  let [playing, setPlaying] = useState(false);
-  let height = 200;
-  let width = 200;
-
-  const startVideo = () => {
-    setPlaying(true);
-    navigator.getUserMedia(
-      {
-        video: true,
-      },
-      (stream) => {
-        let video = document.getElementsByClassName("webcam-scanner")[0];
-        if (video) {
-          video.srcObject = stream;
-        }
-      },
-      (err) => console.error(err)
-    );
-  };
-
-  const stopVideo = () => {
-    setPlaying(false);
-    let video = document.getElementsByClassName("webcam-scanner")[0];
-    video.srcObject.getTracks()[0].stop();
-  };
+  const [data, setData] = React.useState("Not Found");
 
   return (
-    <div className="BarcodeScanner">
-      <div className="barcode-container">
-        <video
-          height={height}
-          width={width}
-          muted
-          autoPlay
-          className="webcam-scanner"
-        ></video>
+    <>
+      <div className="BarcodeScanner">
+        <div className="barcode-container">
+          <BarcodeScannerComponent
+            width={200}
+            height={200}
+            onUpdate={(err, result) => {
+              if (result) setData(result.text);
+              else setData("Not Found");
+            }}
+          />
+          <p>{data}</p>
+        </div>
+        <hr />
+        <div className="barcode-info">
+          Scan an item’s barcode to add it
+          <br /> to your inventory.
+        </div>
+        <div className="buttons mt-3">
+          <div className="active barcode-button">SCAN</div>
+          <div className="inactive barcode-button">CANCEL</div>
+        </div>
       </div>
-      <div className="webcam-input">
-        {playing ? (
-          <button onClick={stopVideo}>Stop</button>
-        ) : (
-          <button onClick={startVideo}>Start</button>
-        )}
-      </div>
-      <hr />
-      <div className="barcode-info">
-        Scan an item’s barcode to add it
-        <br /> to your inventory.
-      </div>
-      <div className="buttons mt-3">
-        <div className="active barcode-button">SCAN</div>
-        <div className="inactive barcode-button">CANCEL</div>
-      </div>
-    </div>
+    </>
   );
 }
