@@ -8,10 +8,7 @@ load_dotenv('password.env')
 
 password = os.getenv('password')
 
-with open('password.txt') as f:
-    password = f.readlines()
-
-cluster = "mongodb+srv://weihan:" + password[0] + "@cluster0.qjw65.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+cluster = "mongodb+srv://weihan:" + password + "@cluster0.qjw65.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 client = motor.motor_asyncio.AsyncIOMotorClient(cluster)
 
 db = client.Database

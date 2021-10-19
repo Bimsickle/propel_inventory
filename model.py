@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Optional,List
 from datetime import datetime, date
 from pydantic import BaseModel
 
@@ -7,7 +7,7 @@ class Item(BaseModel):
     code: Optional[str] = None
     description: Optional[str] = None
     size: Optional[str] = None
-    ingredients: Optional[str] = None
+    ingredients: Optional[List] = None
     allergy_info: Optional[str] = None
 class Inventory(BaseModel):
     item: Item
