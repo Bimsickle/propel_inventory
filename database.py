@@ -1,8 +1,12 @@
 #%%
 import motor.motor_asyncio
 from model import Inventory
+import os
+from dotenv import load_dotenv
 
-password = ""
+load_dotenv('password.env')
+
+password = os.getenv('password')
 
 with open('password.txt') as f:
     password = f.readlines()
