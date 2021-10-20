@@ -13,7 +13,7 @@ from database import (
     fetch_all_items_location
 )
 
-origins = ['https://localhost:3000']
+origins = ['*']
 
 app.add_middleware(
     CORSMiddleware,
