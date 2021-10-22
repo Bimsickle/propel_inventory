@@ -17,6 +17,9 @@ import ChooseInput from "./components/ChooseInput";
 import axios from "axios";
 
 function App() {
+  console.log("http://localhost:8000/");
+
+  axios.get("http://localhost:8000/api/item").then(console.log);
   return (
     <BrowserRouter>
       <div className="App">

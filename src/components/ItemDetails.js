@@ -3,7 +3,9 @@ import axios from "axios";
 import "./ItemDetails.css";
 
 export default function ItemDetails(props) {
-  let product = props.product;
+  console.log(props.location.itemDetailProps);
+  let allInfo = props.location.itemDetailProps.itemDetail.product;
+  console.log(allInfo);
   let [inputValue, setInputValue] = useState("");
   let barcode = "737628064502";
   let apiUrl = `https://world.openfoodfacts.org/api/v0/product/${barcode}.json`;
@@ -15,51 +17,50 @@ export default function ItemDetails(props) {
   let [allergy, setAllergy] = useState("");
   let [quantity, setQuantity] = useState(1);
   let [date, setDate] = useState("MM/DD/YYYY");
-  console.log(props.item);
 
-  function searchItem(event) {
-    event.preventDefault();
-    axios.get(apiUrl).then(handleApiResponse);
-  }
+  let [loaded, setLoaded] = useState(false);
 
-  function handleApiResponse(response) {
-    setItem(response.data.product.generic_name);
-    setImage(response.data.product.image_front_small_url);
-    setDescription(response.data.product.product_name);
-    setIngridients(response.data.product.ingredients_text);
-    setAllergy(response.data.product.allergens_from_ingredients);
-    setSize(response.data.product.serving_size);
-
-    console.log(response);
+  function searchItem() {
+    setItem(allInfo.item.name);
+    setImage();
+    setDescription(allInfo.item.description);
+    setIngridients(allInfo.item.ingridients);
+    setQuantity(allInfo.quantity);
+    setAllergy(allInfo.item.allergy_info);
+    setSize(allInfo.item.size);
+    setDate(allInfo.exp_date);
   }
 
   function handleItemChange(event) {
     event.preventDefault();
   }
-
-  return (
-    <div className="ItemDetails">
-      <div className="text-end bin-icon">
-        <i className="material-icons-outlined">delete</i>
-      </div>
-      <img className="item-picture" src={image} />
-      <div className="row">
-        <div className="col-12 item-name item-details-form">{item}</div>
-        <div className="col-3 item-details-form ms-5">Size</div>
-        <div className="col-3 item-details-form quantity">
-          <span>-</span>
-          {quantity}
-          <span>+</span>
+  if (loaded) {
+    return (
+      <div className="ItemDetails">
+        <div className="text-end bin-icon">
+          <i className="material-icons-outlined">delete</i>
         </div>
-        <div className="col-3 item-details-form me-5">{date}</div>
+        <img className="item-picture" src={image} />
+        <div className="row">
+          <div className="col-12 item-name item-details-form">{item}</div>
+          <div className="col-3 item-details-form ms-5">Size</div>
+          <div className="col-3 item-details-form quantity">
+            <span>-</span>
+            {quantity}
+            <span>+</span>
+          </div>
+          <div className="col-3 item-details-form me-5">{date}</div>
+        </div>
+        <div className="col-12 item-name item-details-form">{ingridients}</div>
+        <div className="">
+          <i className="material-icons add-shopping-list-icon">add_circle</i>
+        </div>
+        <div className="Add-shopping-list">Add to shopping list</div>
       </div>
-      <div className="col-12 item-name item-details-form">Ingridient info</div>
-      <div className="">
-        <i className="material-icons add-shopping-list-icon">add_circle</i>
-      </div>
-      <div onClick={searchItem} className="Add-shopping-list">
-        Add to shopping list
-      </div>
-    </div>
-  );
+    );
+  } else {
+    setLoaded(true);
+    searchItem();
+    return "Loading";
+  }
 }

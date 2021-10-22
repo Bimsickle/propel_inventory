@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./AddItemManually.css";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 export default function AddItemManually() {
   let [products, setProducts] = useState([
