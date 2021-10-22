@@ -65,4 +65,8 @@ async def fetch_all_items_location():
 
 # Retrieve items and sort based on expiration date
 
+# Delete all items in collection
+async def delete_all_items():
+    inventory_clt.delete_many({})
+    return True
 # %%

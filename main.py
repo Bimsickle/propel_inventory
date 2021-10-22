@@ -7,10 +7,12 @@ import json
 app = FastAPI()
 
 from database import (
+    delete_all_items,
     fetch_all_items,
     create_item,
     fetch_all_items_sum,
-    fetch_all_items_location
+    fetch_all_items_location,
+    delete_all_items
 )
 
 origins = ['*']
@@ -50,7 +52,7 @@ async def post_item(inventory: Inventory):
     raise HTTPException(400, "Something went wrong")
 
 @app.post('/api/read-barcode', response_model = Inventory)
-async def get_barcode(file: UploadFile = File(...)):
+async def create_item_from_barcode(file: UploadFile = File(...)):
     extension = file.filename.split(".")[-1] in ("jpg", "jpeg", "png")
     if not extension:
         return "Image must be jpg or png format!"
@@ -61,3 +63,11 @@ async def get_barcode(file: UploadFile = File(...)):
     if response:
         return response
     raise HTTPException(400, "Something went wrong")
+
+@app.delete("/api/delete-all")
+async def delete_all():
+    response = await delete_all_items()
+    if response:
+        return "Successfully deleted all items in Inventory"
+    raise HTTPException(404,f"Something went wrong.")
+
