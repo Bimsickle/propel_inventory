@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 export default function AddItemManually() {
+  let url = "http://localhost:8000/api/item";
+
   let [products, setProducts] = useState([
     {
       name: "Apples",
@@ -67,11 +69,20 @@ export default function AddItemManually() {
     },
   ]);
 
+  axios
+    .post(url, { quantity: 1, exp_date: 23 / 10 / 2012 })
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+
   function addItem(event) {
     event.preventDefault();
     let newItem = {
       name: inputValue,
-      expire: date,
+      ext_date: date,
       quantity: quantity,
       location: "",
       size: size,

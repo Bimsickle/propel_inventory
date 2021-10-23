@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./ItemDetails.css";
+import { Link } from "react-router-dom";
+import EditedDate from "./EditedDate";
 
 export default function ItemDetails(props) {
   console.log(props.location.itemDetailProps);
@@ -13,7 +15,7 @@ export default function ItemDetails(props) {
   let [image, setImage] = useState("");
   let [description, setDescription] = useState("");
   let [size, setSize] = useState("");
-  let [ingridients, setIngridients] = useState("");
+  let [ingredients, setIngredients] = useState("");
   let [allergy, setAllergy] = useState("");
   let [quantity, setQuantity] = useState(1);
   let [date, setDate] = useState("MM/DD/YYYY");
@@ -24,11 +26,21 @@ export default function ItemDetails(props) {
     setItem(allInfo.item.name);
     setImage();
     setDescription(allInfo.item.description);
-    setIngridients(allInfo.item.ingridients);
+    setIngredients(allInfo.item.ingredients);
     setQuantity(allInfo.quantity);
     setAllergy(allInfo.item.allergy_info);
     setSize(allInfo.item.size);
     setDate(allInfo.exp_date);
+  }
+
+  function addItemToList(event) {
+    event.preventDefault();
+    alert("Item was added to list!");
+  }
+
+  function deleteItem(event) {
+    event.preventDefault();
+    alert("Item was deleted!");
   }
 
   function handleItemChange(event) {
@@ -37,25 +49,41 @@ export default function ItemDetails(props) {
   if (loaded) {
     return (
       <div className="ItemDetails">
-        <div className="text-end bin-icon">
-          <i className="material-icons-outlined">delete</i>
-        </div>
+        <header>
+          <Link to="/">
+            <img src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/019/658/original/Rectangle_1.png?1635022936" />
+          </Link>
+        </header>
         <img className="item-picture" src={image} />
         <div className="row">
           <div className="col-12 item-name item-details-form">{item}</div>
-          <div className="col-3 item-details-form ms-5">Size</div>
-          <div className="col-3 item-details-form quantity">
-            <span>-</span>
-            {quantity}
-            <span>+</span>
+
+          <div className="col-3 item-details-form ms-5">{size}</div>
+          <div className="col-3 item-details-form">
+            <EditedDate date={date} />
           </div>
-          <div className="col-3 item-details-form me-5">{date}</div>
+          <div className="col-3 item-details-form quantity me-5">
+            {quantity}
+          </div>
         </div>
-        <div className="col-12 item-name item-details-form">{ingridients}</div>
-        <div className="">
-          <i className="material-icons add-shopping-list-icon">add_circle</i>
+        <div className="text-start ingredients-title">
+          <strong>Ingredients</strong>
         </div>
-        <div className="Add-shopping-list">Add to shopping list</div>
+        <div className="col-12 item-name pb-5 ingredients-detail">
+          Ingredients
+        </div>
+        <div className="row">
+          <div className="col-6" onClick={addItemToList}>
+            <i className="material-icons add-shopping-list-icon">add_circle</i>
+            <div className="text-under-icon">Add to List</div>
+          </div>
+          <div className="col-6">
+            <div onClick={deleteItem}>
+              <i className="material-icons-outlined bin-icon">delete</i>
+            </div>
+            <div className="text-under-icon">Delete Item</div>
+          </div>
+        </div>
       </div>
     );
   } else {

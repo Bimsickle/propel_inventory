@@ -9,6 +9,7 @@ a {
   width: 135px;
   height: 36px;
   padding: 6px 6px 6px 8px;
+  font-family: var(--heading-font-family);
 }
 .buttons {
   display: flex;

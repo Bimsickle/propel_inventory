@@ -2,16 +2,21 @@
   text-align: center;
 }
 
+.ItemDetails header {
+  padding: 18px 140px 30px;
+  border-bottom: 1px solid black;
+}
+
 .item-details-form {
-  border: 1px solid #979797;
+  border: 1px solid var(--navigation-color);
   border-radius: 5px;
-  font-size: 12px;
-  color: #c4c4c4;
+  font-size: 14px;
+  color: black;
   margin: 8px auto;
   height: 33px;
   left: 37px;
   top: 243px;
-  padding: 7px;
+  padding: 4px;
 }
 
 .bin-icon {
@@ -27,23 +32,38 @@
   width: 142px;
   height: 142px;
   object-fit: cover;
-  border: 1px solid #979797;
+  border: 1px solid var(--navigation-color);
+  margin-top: 70px;
+  margin-bottom: 22px;
+  border-radius: 10px;
 }
 
 .quantity {
   width: 80px;
+  padding: 9px;
 }
 
 .bin-icon {
-  margin: 0 85px;
+  color: black;
+  font-size: 35px;
 }
 
-.Add-shopping-list {
+.text-under-icon {
   font-size: 12px;
-  color: #979797;
+  color: black;
+  line-height: 25px;
 }
 
 .add-shopping-list-icon {
-  color: #979797;
+  color: var(--active-color);
   font-size: 35px;
+}
+
+.ingredients-title {
+  font-size: 20px;
+  padding-left: 35px;
+}
+
+.ingredients-detail {
+  padding-left: 35px;
 }

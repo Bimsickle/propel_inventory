@@ -27,6 +27,7 @@ function App() {
         <Route exact path="/" component={Homepage} />
         <Route exact path="/shopping-list" component={ShoppingList} />
         <Route exact path="/add-item" component={AddItemPopUp} />
+        <Route exact path="/add-to-list" component={AddItemOverlay} />
         <Route exact path="/alerts" component={Alerts} />
         <Route exact path="/search" component={Search} />
         <Route exact path="/item-details" component={ItemDetails} />

@@ -1,14 +1,11 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import ItemList from "./ItemList";
 import "./InventoryList.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
 export default function InventoryList() {
   let [loaded, setLoaded] = useState("location");
-  let [item, setItem] = useState("null");
-  let [list, setList] = useState(null);
   let [products, setProducts] = useState([{}]);
   let url = "http://localhost:8000/api/item";
   let [inputValue, setInputValue] = useState("");
@@ -16,15 +13,14 @@ export default function InventoryList() {
   useEffect(() => {
     axios.get(url).then((response) => {
       setProducts(response.data);
-      // axios returns API response body in .data
     });
-  }, []); // second param [] is a list of dependency to watch and run useEffect
+  }, []);
   console.log(products);
 
   function addItem(event) {
     event.preventDefault();
     let newItem = {
-      name: inputValue,
+      itemname: inputValue,
       expire: "12/02",
       quantity: 1,
       location: "cabinet",
@@ -39,12 +35,20 @@ export default function InventoryList() {
     event.preventDefault();
     if (event.target.value === "expiration date") {
       setLoaded("expiration date");
+      products.sort(byDate);
+
+      function byDate(a, b) {
+        return new Date(a.exp_date).valueOf() - new Date(b.exp_date).valueOf();
+      }
     }
     if (event.target.value === "location") {
       setLoaded("location");
     }
     if (event.target.value === "low in stock") {
       setLoaded("low in stock");
+      products.sort(function (a, b) {
+        return a - b;
+      });
     }
   }
 
@@ -58,7 +62,7 @@ export default function InventoryList() {
       <div className="InventoryList">
         <div className="text-end sorting">
           <label for="location"> Sort by:</label>
-          <select name="location" className="dropdown0" onChange={sort}>
+          <select className="dropdown0" onChange={sort}>
             <option value="location">Location</option>
             <option value="expiration date">Expiration Date</option>
             <option value="low in stock">Low in Stock</option>
@@ -71,7 +75,7 @@ export default function InventoryList() {
               return (
                 <div key={index} className="item-slot row">
                   <div className="col-6">
-                    <div className="product-name">{product.quantity}</div>
+                    <div className="product-name">{product.item?.name}</div>
                     <div className="quantity">Qty {product.quantity}</div>
                   </div>
                   <div className="col-6 text-end details-icon">
@@ -81,9 +85,12 @@ export default function InventoryList() {
                         itemDetailProps: { itemDetail: { product } },
                       }}
                     >
-                      <i className="material-icons-outlined">chevron_right</i>
+                      <i className="material-icons-outlined more-info-arrow">
+                        chevron_right
+                      </i>
                     </Link>
                   </div>
+                  <hr />
                 </div>
               );
             })}
@@ -100,7 +107,7 @@ export default function InventoryList() {
       <div className="InventoryList">
         <div className="text-end sorting">
           <label for="location"> Sort by:</label>
-          <select name="location" className="dropdown0" onChange={sort}>
+          <select className="dropdown0" onChange={sort}>
             <option value="location">Location</option>
             <option value="expiration date">Expiration Date</option>
             <option value="low in stock">Low in Stock</option>
@@ -109,6 +116,26 @@ export default function InventoryList() {
         <div>
           <div className="ps-3">
             <strong>Low in Stock</strong>
+            {products.map(function (product, index) {
+              return (
+                <div key={index} className="item-slot row">
+                  <div className="col-6">
+                    <div className="product-name">{product.item.name}</div>
+                    <div className="quantity">Qty {product.quantity}</div>
+                  </div>
+                  <div className="col-6 text-end details-icon">
+                    <Link
+                      to={{
+                        pathname: "/item-details",
+                        itemDetailProps: { itemDetail: { product } },
+                      }}
+                    >
+                      <i className="material-icons-outlined">chevron_right</i>
+                    </Link>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
@@ -128,6 +155,26 @@ export default function InventoryList() {
         <div>
           <div className="ps-3">
             <strong>Expiring First</strong>
+            {products.map(function (product, index) {
+              return (
+                <div key={index} className="item-slot row">
+                  <div className="col-6">
+                    <div className="product-name">{product.item.name}</div>
+                    <div className="quantity">Qty {product.quantity}</div>
+                  </div>
+                  <div className="col-6 text-end details-icon">
+                    <Link
+                      to={{
+                        pathname: "/item-details",
+                        itemDetailProps: { itemDetail: { product } },
+                      }}
+                    >
+                      <i className="material-icons-outlined">chevron_right</i>
+                    </Link>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
