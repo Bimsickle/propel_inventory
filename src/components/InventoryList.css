@@ -1,17 +1,18 @@
-.item-slot {
+.InventoryList .item-slot {
   padding-top: 7px;
-  padding-left: 40px;
+  padding-left: 0;
 }
 
-.product-name {
-  font-size: 12px;
+.InventoryList .product-name {
+  font-size: 14px;
   line-height: 14.06px;
 }
 
-.quantity {
+.InventoryList .quantity {
   font-size: 10px;
   line-height: 11.72px;
-  color: #c4c4c4;
+  color: #acaaaa;
+  padding-left: 0;
 }
 
 .details-icon {
@@ -26,4 +27,8 @@
 
 .dropdown {
   border: none;
+}
+
+.more-info-arrow {
+  color: var(--navigation-color);
 }

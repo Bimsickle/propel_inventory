@@ -1,11 +1,6 @@
 import React, { useState } from "react";
 import InventoryList from "./InventoryList";
-import ItemDetails from "./ItemDetails";
-import ItemList from "./ItemList";
-import LocationList from "./LocationList";
 import ShoppingList from "./ShoppingList";
-import { Route, Link } from "react-router-dom";
-import HomepageNav from "./HomepageNav";
 import "./Homepage.css";
 
 export default function Homepage() {

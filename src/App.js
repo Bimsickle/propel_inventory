@@ -17,6 +17,9 @@ import ChooseInput from "./components/ChooseInput";
 import axios from "axios";
 
 function App() {
+  console.log("http://localhost:8000/");
+
+  axios.get("http://localhost:8000/api/item").then(console.log);
   return (
     <BrowserRouter>
       <div className="App">
@@ -24,6 +27,7 @@ function App() {
         <Route exact path="/" component={Homepage} />
         <Route exact path="/shopping-list" component={ShoppingList} />
         <Route exact path="/add-item" component={AddItemPopUp} />
+        <Route exact path="/add-to-list" component={AddItemOverlay} />
         <Route exact path="/alerts" component={Alerts} />
         <Route exact path="/search" component={Search} />
         <Route exact path="/item-details" component={ItemDetails} />
