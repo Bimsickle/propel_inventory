@@ -1,15 +1,20 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useState, useEffect } from "react";
 import "./ShoppingList.css";
 
 export default function ShoppingList() {
-  let [shoppingProducts, setShoppingProducts] = useState([
-    { name: "Fish fingers", quantity: 2, isSelected: false },
-    { name: "Sausages", quantity: 1, isSelected: true },
-    { name: "Smoked Salmon", quantity: 2, isSelected: false },
-    { name: "Prawns", quantity: 4, isSelected: false },
-  ]);
+  let [shoppingProducts, setShoppingProducts] = useState([{}]);
   let [inputValue, setInputValue] = useState("");
   let [totalItemCount, setTotalItemCount] = useState("");
+  let [loaded, setLoaded] = useState(false);
+  let url = "http://localhost:8000/api/shopping/item";
+
+  useEffect(() => {
+    axios.get(url).then((response) => {
+      setShoppingProducts(response.data);
+    });
+  }, []);
+  console.log(shoppingProducts);
 
   function addShoppingItem(event) {
     event.preventDefault();
@@ -52,65 +57,47 @@ export default function ShoppingList() {
 
     setTotalItemCount(totalItemCount);
   };
+  if (loaded) {
+    return (
+      <div className="ShoppingList">
+        <div className="text-end p-3">
+          <strong>Purchased</strong>
+        </div>
+        <div></div>
+        <div className="ps-3">
+          <strong>Pantry</strong>
+        </div>
+        {shoppingProducts.map(function (shoppingProduct, index) {
+          return (
+            <div key={index} className="item-slot row">
+              <div className="col-6">
+                <div className="product-name">{shoppingProduct.item?.name}</div>
+                <div className="quantity">Qty {shoppingProduct.quantity}</div>
+              </div>
+              <div className="col-6 text-end">
+                <div onClick={() => itemComplete(index)}>
+                  {shoppingProduct.bought ? (
+                    <span class="material-icons-outlined details-icon">
+                      check_box
+                    </span>
+                  ) : (
+                    <span class="material-icons-outlined details-icon">
+                      check_box_outline_blank
+                    </span>
+                  )}
+                </div>
+              </div>
+            </div>
+          );
+        })}
+        <div className="ps-3">
+          <strong>Refrigerator</strong>
+        </div>
+      </div>
+    );
+  } else {
+    setLoaded(true);
 
-  return (
-    <div className="ShoppingList">
-      <div className="text-end p-3">
-        <strong>Purchased</strong>
-      </div>
-      <div></div>
-      <div className="ps-3">
-        <strong>Pantry</strong>
-      </div>
-      {shoppingProducts.map(function (shoppingProduct, index) {
-        return (
-          <div key={index} className="item-slot row">
-            <div className="col-6">
-              <div className="product-name">{shoppingProduct.name}</div>
-              <div className="quantity">Qty {shoppingProduct.quantity}</div>
-            </div>
-            <div className="col-6 text-end">
-              <div onClick={() => itemComplete(index)}>
-                {shoppingProduct.isSelected ? (
-                  <span class="material-icons-outlined details-icon">
-                    check_box
-                  </span>
-                ) : (
-                  <span class="material-icons-outlined details-icon">
-                    check_box_outline_blank
-                  </span>
-                )}
-              </div>
-            </div>
-          </div>
-        );
-      })}
-      <div className="ps-3">
-        <strong>Refrigerator</strong>
-      </div>
-      {shoppingProducts.map(function (shoppingProduct, index) {
-        return (
-          <div key={index} className="item-slot row">
-            <div className="col-6">
-              <div className="product-name">{shoppingProduct.name}</div>
-              <div className="quantity">Qty {shoppingProduct.quantity}</div>
-            </div>
-            <div className="col-6 text-end">
-              <div onClick={() => itemComplete(index)}>
-                {shoppingProduct.isSelected ? (
-                  <span class="material-icons-outlined details-icon">
-                    check_box
-                  </span>
-                ) : (
-                  <span class="material-icons-outlined details-icon">
-                    check_box_outline_blank
-                  </span>
-                )}
-              </div>
-            </div>
-          </div>
-        );
-      })}
-    </div>
-  );
+    return "Loading";
+  }
 }

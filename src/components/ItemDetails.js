@@ -70,7 +70,9 @@ export default function ItemDetails(props) {
           <strong>Ingredients</strong>
         </div>
         <div className="col-12 item-name pb-5 ingredients-detail">
-          Ingredients
+          {ingredients.map(function (ingredient, index) {
+            return <div key={index}>{ingredient.text}</div>;
+          })}
         </div>
         <div className="row">
           <div className="col-6" onClick={addItemToList}>
