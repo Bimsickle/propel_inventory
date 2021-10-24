@@ -1,8 +1,7 @@
 from fastapi import FastAPI, HTTPException, File, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
-from model import Inventory
+from model import Inventory,ShoppingList
 from barcode_scanning import read_image, scan_barcode,process_data
-import json
 
 app = FastAPI()
 
@@ -12,7 +11,9 @@ from database import (
     create_item,
     fetch_all_items_sum,
     fetch_all_items_location,
-    delete_all_items
+    delete_all_items,
+    create_item_shopping,
+    fetch_all_items_shopping
 )
 
 origins = ['*']
@@ -44,7 +45,7 @@ async def get_items_location_from_inventory():
     response = await fetch_all_items_location()
     return response
 
-@app.post("/api/item/", response_model=Inventory)
+@app.post("/api/create-item/", response_model=Inventory)
 async def create_item_inventory(inventory: Inventory):
     response = await create_item(inventory.dict())
     if response:
@@ -71,3 +72,14 @@ async def delete_all_items_inventory():
         return "Successfully deleted all items in Inventory"
     raise HTTPException(404,f"Something went wrong.")
 
+@app.get("/api/shopping/item")
+async def get_items_from_shopping_list():
+    response = await fetch_all_items_shopping()
+    return response
+
+@app.post("/api/shopping/create-item", response_model=ShoppingList)
+async def create_item_inventory(shoppinglist: ShoppingList):
+    response = await create_item_shopping(shoppinglist.dict())
+    if response:
+        return response
+    raise HTTPException(400, "Something went wrong")

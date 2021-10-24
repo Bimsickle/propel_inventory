@@ -14,3 +14,9 @@ class Inventory(BaseModel):
     quantity: int 
     exp_date: Optional[datetime] = None
     location: Optional[str] = None
+
+class ShoppingList(BaseModel):
+    date: Optional[datetime] = None
+    item: Item
+    quantity: int
+    bought: Optional[bool] = False

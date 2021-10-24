@@ -1,6 +1,6 @@
 #%%
 import motor.motor_asyncio
-from model import Inventory
+from model import Inventory, ShoppingList
 import os
 from dotenv import load_dotenv
 
@@ -13,6 +13,7 @@ client = motor.motor_asyncio.AsyncIOMotorClient(cluster)
 
 db = client.Database
 inventory_clt = db.Inventory
+shopping_clt = db.Shopping
 
 # Add new item into the inventory
 async def create_item(item):
@@ -69,4 +70,18 @@ async def fetch_all_items_location():
 async def delete_all_items():
     inventory_clt.delete_many({})
     return True
+
+# Add new item into the shopping list
+async def create_item_shopping(item):
+    document = item
+    result = await shopping_clt.insert_one(item)
+    return document
+
+# Get all items from the shopping list
+async def fetch_all_items_shopping():
+    items = []
+    cursor = shopping_clt.find({})
+    async for document in cursor:
+        items.append(ShoppingList(**document))
+    return items
 # %%
