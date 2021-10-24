@@ -30,29 +30,29 @@ def home():
     return {"Data":"Test"}
 
 @app.get("/api/item")
-async def get_items():
+async def get_items_from_inventory():
     response = await fetch_all_items()
     return response
 
 @app.get("/api/item/sum")
-async def get_items_sum():
+async def get_items_sum_from_inventory():
     response = await fetch_all_items_sum()
     return response
 
 @app.get("/api/item/location")
-async def get_items_location():
+async def get_items_location_from_inventory():
     response = await fetch_all_items_location()
     return response
 
 @app.post("/api/item/", response_model=Inventory)
-async def post_item(inventory: Inventory):
+async def create_item_inventory(inventory: Inventory):
     response = await create_item(inventory.dict())
     if response:
         return response
     raise HTTPException(400, "Something went wrong")
 
 @app.post('/api/read-barcode', response_model = Inventory)
-async def create_item_from_barcode(file: UploadFile = File(...)):
+async def create_item_from_barcode_inventory(file: UploadFile = File(...)):
     extension = file.filename.split(".")[-1] in ("jpg", "jpeg", "png")
     if not extension:
         return "Image must be jpg or png format!"
@@ -64,8 +64,8 @@ async def create_item_from_barcode(file: UploadFile = File(...)):
         return response
     raise HTTPException(400, "Something went wrong")
 
-@app.delete("/api/delete-all")
-async def delete_all():
+@app.delete("/api/delete-all-inventory")
+async def delete_all_items_inventory():
     response = await delete_all_items()
     if response:
         return "Successfully deleted all items in Inventory"
