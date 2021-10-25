@@ -24,3 +24,13 @@
   position: absolute;
   left: 155px;
 }
+
+.HomepageNav a {
+  color: white;
+  opacity: 75%;
+}
+
+.HomepageNav .active {
+  color: white;
+  opacity: 100%;
+}

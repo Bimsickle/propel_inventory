@@ -16,14 +16,14 @@ a {
   justify-content: space-around;
 }
 
-div.active:hover {
+div.active-button:hover {
   color: black;
 }
 
 div.inactive:hover {
   color: black;
 }
-.active {
+.active-button {
   background-color: var(--active-color);
   color: black;
   font-weight: 500;

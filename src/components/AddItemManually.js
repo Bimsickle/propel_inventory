@@ -12,59 +12,35 @@ export default function AddItemManually() {
   let [quantity, setQuantity] = useState(0);
   let [date, setDate] = useState("MM/DD/YYYY");
   let url = "http://localhost:8000/api/create-item/";
-  let [products, setProducts] = useState([
-    {
-      exp_date: "",
-      item: {
-        allergy_info: "",
-        code: "",
-        description: "",
-        ingredients: [
-          {
-            id: "",
-            percent_estimate: "",
-            percent_max: "",
-            percent_min: "",
-            rank: "",
-            text: "",
-            vegan: "",
-            vegetarian: "",
-          },
-        ],
-        name: "",
-        size: "",
-      },
-      location: "",
-      quantity: 0,
+  let [products, setProducts] = useState({
+    item: {
+      name: "",
+      code: "",
+      description: "",
+      size: "",
+      ingredients: [""],
+      allergy_info: "",
     },
-  ]);
+    quantity: 0,
+    exp_date: "",
+    location: "",
+  });
 
   function addItemApi(event) {
     event.preventDefault();
     console.log(products);
     setProducts({
-      exp_date: date,
       item: {
-        allergy_info: "",
+        name: item,
         code: "",
         description: "",
-        ingredients: [
-          {
-            id: "",
-            percent_estimate: "",
-            percent_max: "",
-            percent_min: "",
-            rank: "",
-            text: ingredients,
-            vegan: "",
-            vegetarian: "",
-          },
-        ],
-        name: item,
         size: size,
+        ingredients: [ingredients],
+        allergy_info: "",
       },
-      location: "",
       quantity: quantity,
+      exp_date: date,
+      location: "",
     });
     console.log(products);
 
@@ -104,7 +80,7 @@ export default function AddItemManually() {
   }
 
   return (
-    <div className="AddItemManually pt-3">
+    <div className="AddItemManually pt-5">
       <div className="image-container" onClick={handleImageUpload}>
         <i class="material-icons-outlined add-photo-icon">add_a_photo</i>
         <div className="image-text">Add photos</div>
@@ -144,7 +120,7 @@ export default function AddItemManually() {
         </div>
       </form>
       <div className="buttons m-3">
-        <div className="active add-item-button" onClick={addItemApi}>
+        <div className="active-button add-item-button" onClick={addItemApi}>
           ADD ITEM
         </div>
         <Link to="/">

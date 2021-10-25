@@ -19,7 +19,7 @@ export default function Homepage() {
       <div className="Homepage">
         <section>
           <div className="buttons">
-            <div className="active homepage-button">INVENTORY</div>
+            <div className="active-button homepage-button">INVENTORY</div>
 
             <div
               className="inactive homepage-button"
@@ -44,7 +44,7 @@ export default function Homepage() {
               INVENTORY
             </div>
 
-            <div className="active homepage-button">LIST</div>
+            <div className="active-button homepage-button">LIST</div>
           </div>
           <ShoppingList />
         </section>

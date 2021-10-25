@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import "./ShoppingList.css";
+import Homepage from "./Homepage";
 
 export default function ShoppingList() {
   let [shoppingProducts, setShoppingProducts] = useState([{}]);
@@ -57,6 +58,7 @@ export default function ShoppingList() {
 
     setTotalItemCount(totalItemCount);
   };
+
   if (loaded) {
     return (
       <div className="ShoppingList">

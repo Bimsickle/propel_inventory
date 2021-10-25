@@ -11,6 +11,10 @@ export default function BarcodeScanner() {
     <>
       <div className="BarcodeScanner">
         <div className="barcode-container">
+          <div className="barcode-info">
+            Scan an item’s barcode to <br />
+            add it to your inventory.
+          </div>
           <BarcodeScannerComponent
             width={200}
             height={200}
@@ -21,13 +25,9 @@ export default function BarcodeScanner() {
           />
           <p>{data}</p>
         </div>
-        <hr />
-        <div className="barcode-info">
-          Scan an item’s barcode to add it
-          <br /> to your inventory.
-        </div>
+
         <div className="buttons mt-3">
-          <div className="active barcode-button">SCAN</div>
+          <div className="active-button barcode-button">SCAN NOW</div>
           <div className="inactive barcode-button">CANCEL</div>
         </div>
       </div>

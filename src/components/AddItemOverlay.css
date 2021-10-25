@@ -1,5 +1,20 @@
+.AddItemOverlay header {
+  padding: 18px 140px 30px;
+  border-bottom: 1px solid black;
+  text-align: center;
+}
+
+.AddItemOverlay .item-details-form {
+  border: 1px solid var(--navigation-color);
+}
+
+.AddItemOverlay hr {
+  border-color: black;
+  background-color: black;
+}
 .past-items {
-  color: #979797;
+  color: #2c343f;
+  font-size: 14px;
 }
 
 .past-item-block {
@@ -8,10 +23,10 @@
 }
 
 .past-items-list {
-  margin-top: 33px;
+  margin-top: 10px;
 }
 .add-item-icon {
-  color: #979797;
+  color: var(--active-color);
   padding: 8px;
 }
 
@@ -20,6 +35,7 @@
   height: 33px;
   top: 100px;
   left: 79px;
+  margin-top: 42px;
 }
 
 .add-quantity {

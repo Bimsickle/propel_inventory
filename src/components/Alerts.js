@@ -51,7 +51,7 @@ export default function Alerts() {
             </div>
           );
         })}
-        <div className="active add-item-button me-5">DISMISS</div>
+        <div className="active-button add-item-button me-5">DISMISS</div>
       </div>
     );
   } else {
