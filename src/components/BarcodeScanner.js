@@ -5,7 +5,15 @@ import BarcodeScannerComponent from "react-webcam-barcode-scanner";
 import axios from "axios";
 
 export default function BarcodeScanner() {
-  const [data, setData] = React.useState("Not Found");
+  const [barcode, setBarcode] = React.useState("Not Found");
+  let url = "http://localhost:8000/api/create-item-barcode";
+
+  if (barcode !== "Not Found") {
+    axios.post(url, barcode).then((res) => {
+      console.log(res);
+      console.log(res.data);
+    });
+  }
 
   return (
     <>
@@ -19,11 +27,11 @@ export default function BarcodeScanner() {
             width={200}
             height={200}
             onUpdate={(err, result) => {
-              if (result) setData(result.text);
-              else setData("Not Found");
+              if (result) setBarcode(result.text);
+              else setBarcode("Not Found");
             }}
           />
-          <p>{data}</p>
+          <p>{barcode}</p>
         </div>
 
         <div className="buttons mt-3">

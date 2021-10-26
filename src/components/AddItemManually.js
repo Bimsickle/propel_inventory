@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./AddItemManually.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import dateFormat, { masks } from "dateformat";
 
 export default function AddItemManually() {
   let [inputValue, setInputValue] = useState("");
@@ -14,16 +15,16 @@ export default function AddItemManually() {
   let url = "http://localhost:8000/api/create-item/";
   let [products, setProducts] = useState({
     item: {
-      name: "",
-      code: "",
-      description: "",
-      size: "",
-      ingredients: [""],
-      allergy_info: "",
+      name: "random",
+      code: "string",
+      description: "string",
+      size: "string",
+      ingredients: ["string"],
+      allergy_info: "string",
     },
     quantity: 0,
-    exp_date: "",
-    location: "",
+    exp_date: "2021-10-24T14:34:40.778Z",
+    location: "string",
   });
 
   function addItemApi(event) {
@@ -32,26 +33,36 @@ export default function AddItemManually() {
     setProducts({
       item: {
         name: item,
-        code: "",
-        description: "",
+        code: "string",
+        description: "string",
         size: size,
-        ingredients: [ingredients],
-        allergy_info: "",
+        ingredients: ["string"],
+        allergy_info: ingredients,
       },
       quantity: quantity,
-      exp_date: date,
-      location: "",
+      exp_date: "2021-10-24T14:34:40.778Z",
+      location: "string",
     });
     console.log(products);
 
-    axios
-      .post(url, products)
-      .then((res) => {
-        console.log(res);
-        console.log(res.data);
+    fetch("http://localhost:8000/api/create-item/", {
+      method: "POST",
+      body: JSON.stringify(products),
+    })
+      .then(function (respones) {
+        return respones.json();
       })
-      .catch((err) => console.log(err));
+      .then(function (data) {
+        console.log(data);
+      });
   }
+  //  axios
+  //   .post(url, products)
+  //   .then((res) => {
+  ///     console.log(res);
+  ///   console.log(res.data);
+  //    })
+  ///  .catch((err) => console.log(err));
 
   function handleItemChange(event) {
     event.preventDefault();
