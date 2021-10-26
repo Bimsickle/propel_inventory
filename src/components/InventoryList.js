@@ -61,7 +61,7 @@ export default function InventoryList() {
     return (
       <div className="InventoryList">
         <div className="text-end sorting">
-          <label for="location"> Sort by:</label>
+          <label> Sort by:</label>
           <select className="dropdown0" onChange={sort}>
             <option value="location">Location</option>
             <option value="expiration date">Expiration Date</option>
@@ -106,7 +106,7 @@ export default function InventoryList() {
     return (
       <div className="InventoryList">
         <div className="text-end sorting">
-          <label for="location"> Sort by:</label>
+          <label> Sort by:</label>
           <select className="dropdown0" onChange={sort}>
             <option value="location">Location</option>
             <option value="expiration date">Expiration Date</option>
@@ -133,6 +133,7 @@ export default function InventoryList() {
                       <i className="material-icons-outlined">chevron_right</i>
                     </Link>
                   </div>
+                  <hr />
                 </div>
               );
             })}
@@ -145,7 +146,7 @@ export default function InventoryList() {
     return (
       <div className="InventoryList">
         <div className="text-end sorting">
-          <label for="location"> Sort by:</label>
+          <label> Sort by:</label>
           <select name="location" className="dropdown0" onChange={sort}>
             <option value="location">Location</option>
             <option value="expiration date">Expiration Date</option>
@@ -172,6 +173,7 @@ export default function InventoryList() {
                       <i className="material-icons-outlined">chevron_right</i>
                     </Link>
                   </div>
+                  <hr />
                 </div>
               );
             })}

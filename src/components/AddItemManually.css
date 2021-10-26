@@ -7,10 +7,11 @@
 .image-container {
   width: 120px;
   height: 138px;
-  background-color: #c4c4c4;
+  background-color: #fbfcfc;
   margin: 0 auto;
   border-radius: 10px;
   text-align: center;
+  border: 1px solid var(--navigation-color);
 }
 
 .image-text {

@@ -1,10 +1,14 @@
 .icon-container {
   text-align: center;
-  font-size: 12px;
+  font-size: 14px;
   width: 80px;
   height: 92px;
   border-radius: 10px;
-  background-color: #c4c4c4;
+  background-color: var(--active-color);
   color: black;
   padding-top: 18px;
+}
+
+.ChooseInput i {
+  font-size: 25px;
 }

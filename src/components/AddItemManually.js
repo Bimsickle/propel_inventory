@@ -4,100 +4,58 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 export default function AddItemManually() {
-  let url = "http://localhost:8000/api/item";
+  let [inputValue, setInputValue] = useState("");
+  let [item, setItem] = useState("");
+  let [image, setImage] = useState(null);
+  let [size, setSize] = useState("");
+  let [ingredients, setIngredients] = useState("");
+  let [quantity, setQuantity] = useState(0);
+  let [date, setDate] = useState("MM/DD/YYYY");
+  let url = "http://localhost:8000/api/create-item/";
+  let [products, setProducts] = useState({
+    item: {
+      name: "",
+      code: "",
+      description: "",
+      size: "",
+      ingredients: [""],
+      allergy_info: "",
+    },
+    quantity: 0,
+    exp_date: "",
+    location: "",
+  });
 
-  let [products, setProducts] = useState([
-    {
-      name: "Apples",
-      expire: "12/05",
-      quantity: 1,
-      location: "fridge",
-      size: "20kg",
-      allergens: "nuts",
-      image:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/220px-Apple_logo_black.svg.png",
-    },
-    {
-      name: "Bananas",
-      expire: "02/05",
-      quantity: 3,
-      location: "cabinet",
-      size: "20kg",
-      allergens: "nuts",
-      image:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/220px-Apple_logo_black.svg.png",
-    },
-    {
-      name: "Oranges",
-      expire: "03/03",
-      quantity: 10,
-      location: "cabinet",
-      size: "20kg",
-      allergens: "nuts",
-      image:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/220px-Apple_logo_black.svg.png",
-    },
-    {
-      name: "Grapes",
-      expire: "04/02",
-      quantity: 4,
-      location: "fridge",
-      size: "20kg",
-      allergens: "nuts",
-      image:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/220px-Apple_logo_black.svg.png",
-    },
-    {
-      name: "Melon",
-      expire: "23/06",
-      quantity: 5,
-      location: "fridge",
-      size: "20kg",
-      allergens: "nuts",
-      image:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/220px-Apple_logo_black.svg.png",
-    },
-    {
-      name: "Berries",
-      expire: "23/04",
-      quantity: 2,
-      location: "fridge",
-      size: "20kg",
-      allergens: "cream",
-      image:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/220px-Apple_logo_black.svg.png",
-    },
-  ]);
-
-  axios
-    .post(url, { quantity: 1, exp_date: 23 / 10 / 2012 })
-    .then((response) => {
-      console.log(response);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-
-  function addItem(event) {
+  function addItemApi(event) {
     event.preventDefault();
-    let newItem = {
-      name: inputValue,
-      ext_date: date,
+    console.log(products);
+    setProducts({
+      item: {
+        name: item,
+        code: "",
+        description: "",
+        size: size,
+        ingredients: [ingredients],
+        allergy_info: "",
+      },
       quantity: quantity,
+      exp_date: date,
       location: "",
-      size: size,
-      allergens: allergy,
-      image: image,
-    };
-    let newItems = [...products, newItem];
-    console.log(newItems);
-    setProducts(newItems);
-    setInputValue("");
-    alert(`${newItem.name} has been added!`);
+    });
+    console.log(products);
+
+    axios
+      .post(url, products)
+      .then((res) => {
+        console.log(res);
+        console.log(res.data);
+      })
+      .catch((err) => console.log(err));
   }
+
   function handleItemChange(event) {
     event.preventDefault();
-    setInputValue(event.target.value);
+    setItem(event.target.value);
   }
   function handleQuantityChange(event) {
     event.preventDefault();
@@ -113,27 +71,16 @@ export default function AddItemManually() {
   }
   function handleAllergenChange(event) {
     event.preventDefault();
-    setAllergy(event.target.value);
+    setIngredients(event.target.value);
   }
 
   function handleImageUpload(event) {
     event.preventDefault();
     alert("Hello from Image Upload");
   }
-  let [inputValue, setInputValue] = useState("");
-  let barcode = "737628064502";
-  let apiUrl = `https://world.openfoodfacts.org/api/v0/product/${barcode}.json`;
-  let [item, setItem] = useState("");
-  let [image, setImage] = useState(null);
-  let [description, setDescription] = useState("");
-  let [size, setSize] = useState("");
-  let [ingridients, setIngridients] = useState("");
-  let [allergy, setAllergy] = useState("");
-  let [quantity, setQuantity] = useState(1);
-  let [date, setDate] = useState("MM/DD/YYYY");
 
   return (
-    <div className="AddItemManually pt-3">
+    <div className="AddItemManually pt-5">
       <div className="image-container" onClick={handleImageUpload}>
         <i class="material-icons-outlined add-photo-icon">add_a_photo</i>
         <div className="image-text">Add photos</div>
@@ -173,7 +120,7 @@ export default function AddItemManually() {
         </div>
       </form>
       <div className="buttons m-3">
-        <div className="active add-item-button" onClick={addItem}>
+        <div className="active-button add-item-button" onClick={addItemApi}>
           ADD ITEM
         </div>
         <Link to="/">
