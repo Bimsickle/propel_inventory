@@ -10,14 +10,18 @@ def read_image(file):
     img = Image.open(BytesIO(file))
     return img
 
-def scan_barcode(img):
-    for barcode in decode(img):
-        code = barcode.data.decode('utf-8')
-
+def retrieve_json(code):
     url = 'https://world.openfoodfacts.org/api/v0/product/' + code + '.json'
     r = requests.get(url)
     return r.json()
 
+def scan_barcode(img):
+    for barcode in decode(img):
+        code = barcode.data.decode('utf-8')
+
+    json_data = retrieve_json(code)
+    return json_data
+    
 def process_data(data):
     item = {
                 "name": "",

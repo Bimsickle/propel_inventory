@@ -64,7 +64,19 @@ async def fetch_all_items_location():
         items.append(document)
     return items
 
-# Retrieve items and sort based on expiration date
+# # Retrieve items and sort based on expiration date
+# async def fetch_all_items_date():
+#     items = []
+#     cursor = inventory_clt.aggregate(
+#         [
+#             {
+#                 "$sort": {"exp_date":-1}
+#             }
+#         ]
+#     )
+#     async for document in cursor:
+#         items.append(document)
+#     return items
 
 # Delete all items in collection
 async def delete_all_items():
