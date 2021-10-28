@@ -40,29 +40,29 @@ export default function AddItemManually() {
         allergy_info: ingredients,
       },
       quantity: quantity,
-      exp_date: "2021-10-24T14:34:40.778Z",
+      exp_date: `${date}T14:34:40.778Z`,
       location: "string",
     });
     console.log(products);
-
-    fetch("http://localhost:8000/api/create-item/", {
-      method: "POST",
-      body: JSON.stringify(products),
-    })
-      .then(function (respones) {
-        return respones.json();
+    axios
+      .post(url, products)
+      .then((res) => {
+        console.log(res);
+        console.log(res.data);
       })
-      .then(function (data) {
-        console.log(data);
-      });
+      .catch((err) => console.log(err));
+
+    // fetch("http://localhost:8000/api/create-item/", {
+    //   method: "POST",
+    //   body: JSON.stringify(products),
+    //// })
+    //   .then(function (respones) {
+    //    return respones.json();
+    //  })
+    //  .then(function (data) {
+    //    console.log(data);
+    //  });
   }
-  //  axios
-  //   .post(url, products)
-  //   .then((res) => {
-  ///     console.log(res);
-  ///   console.log(res.data);
-  //    })
-  ///  .catch((err) => console.log(err));
 
   function handleItemChange(event) {
     event.preventDefault();
