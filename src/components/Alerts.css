@@ -10,10 +10,18 @@
 }
 
 .expire {
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .Alerts .item-slot {
   padding-bottom: 8px;
   padding-top: 8px;
+  font-size: 14px;
+}
+
+.Alerts .quantity {
+  font-size: 10px;
+  line-height: 11.72px;
+  color: #acaaaa;
+  padding-left: 0;
 }

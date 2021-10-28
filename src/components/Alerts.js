@@ -26,16 +26,16 @@ export default function Alerts() {
 
         {products.map(function (product, index) {
           return (
-            <div key={index} className="item-slot row">
-              <div className="col-4">
+            <div key={index} className="item-slot row ps-4">
+              <div className="col-5">
                 <div className="product-name">{product.item?.name}</div>
                 <div className="quantity">Qty {product.quantity}</div>
               </div>
-              <div className="col-4 expire">
+              <div className="col-5 expire">
                 Expires <EditedDate date={product.exp_date} />
               </div>
 
-              <div className="col-4 text-end details-icon">
+              <div className="col-2 text-end details-icon">
                 <Link
                   to={{
                     pathname: "/item-details",
