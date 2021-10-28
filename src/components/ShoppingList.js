@@ -26,37 +26,12 @@ export default function ShoppingList() {
     setInputValue("");
   }
 
-  function handleShoppingItemChange(event) {
-    event.preventDefault();
-    setInputValue(event.target.value);
-  }
-
   let itemComplete = (index) => {
-    let newItems = [...shoppingProducts];
-    newItems[index].isSelected = !newItems[index].isSelected;
+    const newItems = [...shoppingProducts];
+
+    newItems[index].bought = !newItems[index].bought;
+
     setShoppingProducts(newItems);
-  };
-
-  let handleQuantityIncrease = (index) => {
-    let newItems = [...shoppingProducts];
-    newItems[index].quantity++;
-    setShoppingProducts(newItems);
-    calculateTotal();
-  };
-
-  let handleQuantityDecrease = (index) => {
-    let newItems = [...shoppingProducts];
-    newItems[index].quantity--;
-    setShoppingProducts(newItems);
-    calculateTotal();
-  };
-
-  let calculateTotal = () => {
-    let totalItemCount = shoppingProducts.reduce((total, item) => {
-      return total + item.quantity;
-    }, 0);
-
-    setTotalItemCount(totalItemCount);
   };
 
   if (loaded) {

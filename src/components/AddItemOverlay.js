@@ -13,7 +13,7 @@ export default function AddItemOverlay() {
       code: "string",
       description: "string",
       ingredients: ["string"],
-      name: "string",
+      name: "",
       size: "string",
     },
     quantity: 0,

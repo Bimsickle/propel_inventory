@@ -7,12 +7,47 @@ import axios from "axios";
 export default function BarcodeScanner() {
   const [barcode, setBarcode] = React.useState("Not Found");
   let url = "http://localhost:8000/api/create-item-barcode";
+  let [item, setItem] = useState({
+    item: {
+      name: "",
+      code: "",
+      description: "",
+      size: "",
+      ingredients: [],
+      allergy_info: "",
+    },
+    quantity: 1,
+    exp_date: "2021-10-24T14:34:40.778Z",
+    location: "",
+  });
 
-  if (barcode !== "Not Found") {
-    axios.post(url, barcode).then((res) => {
-      console.log(res);
-      console.log(res.data);
+  function scanBarcode(event) {
+    event.preventDefault();
+    setItem({
+      item: {
+        name: "",
+        code: barcode,
+        description: "",
+        size: "",
+        ingredients: [],
+        allergy_info: "",
+      },
+      quantity: 1,
+      exp_date: "2021-10-24T14:34:40.778Z",
+      location: "",
     });
+    console.log(item);
+
+    fetch(url, {
+      method: "POST",
+      body: JSON.stringify(item),
+    })
+      .then(function (respones) {
+        return respones.json();
+      })
+      .then(function (data) {
+        console.log(data);
+      });
   }
 
   return (
@@ -35,7 +70,9 @@ export default function BarcodeScanner() {
         </div>
 
         <div className="buttons mt-3">
-          <div className="active-button barcode-button">SCAN NOW</div>
+          <div className="active-button barcode-button" onClick={scanBarcode}>
+            SCAN NOW
+          </div>
           <div className="inactive barcode-button">CANCEL</div>
         </div>
       </div>
