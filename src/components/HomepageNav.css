@@ -5,6 +5,7 @@
   top: 584px;
   background: var(--navigation-color);
   padding-top: 7px;
+  position: fixed;
 }
 
 .nav-elements {

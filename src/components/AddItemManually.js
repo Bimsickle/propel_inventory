@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./AddItemManually.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -24,9 +24,25 @@ export default function AddItemManually() {
     location: "string",
   });
 
+  useEffect(() => {
+    setProducts({
+      item: {
+        name: item,
+        code: "string",
+        description: "string",
+        size: size,
+        ingredients: ["string"],
+        allergy_info: ingredients,
+      },
+      quantity: quantity,
+      exp_date: `${date}T14:34:40.778Z`,
+      location: "string",
+    });
+    console.log("new value of products", products);
+  }, [item, date, quantity, ingredients, size]); // eslint-disable-line react-hooks/exhaustive-deps
+
   function addItemApi(event) {
     event.preventDefault();
-    console.log(products);
     setProducts({
       item: {
         name: item,
@@ -41,25 +57,29 @@ export default function AddItemManually() {
       location: "string",
     });
     console.log(products);
+
     axios
       .post(url, products)
       .then((res) => {
         console.log(res);
         console.log(res.data);
+        alert(`${item} was added`);
       })
       .catch((err) => console.log(err));
-
-    // fetch("http://localhost:8000/api/create-item/", {
-    //   method: "POST",
-    //   body: JSON.stringify(products),
-    //// })
-    //   .then(function (respones) {
-    //    return respones.json();
-    //  })
-    //  .then(function (data) {
-    //    console.log(data);
-    //  });
   }
+
+  /// fetch("http://localhost:8000/api/create-item/", {
+  //  method: "POST",
+  //   body: JSON.stringify(products),
+  //  })
+  //    .then(function (respones) {
+  //   return respones.json();
+  //     })
+  //    .then(function (data) {
+  //      console.log(data);
+  //     alert(`${item} was added`);
+  //    });
+  // }
 
   function handleItemChange(event) {
     event.preventDefault();

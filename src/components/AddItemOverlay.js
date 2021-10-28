@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./AddItemOverlay.css";
 import { Link } from "react-router-dom";
 
@@ -19,6 +19,23 @@ export default function AddItemOverlay() {
   });
   let [name, setName] = useState("");
   let [quantity, setQuantity] = useState("");
+
+  useEffect(() => {
+    setItem({
+      bought: false,
+      date: "2021-10-24T14:34:40.778Z",
+      item: {
+        allergy_info: "string",
+        code: "string",
+        description: "string",
+        ingredients: ["string"],
+        name: name,
+        size: "string",
+      },
+      quantity: quantity,
+    });
+    console.log("new value of items", item);
+  }, [name, quantity]); // eslint-disable-line react-hooks/exhaustive-deps
 
   function handleItemChange(event) {
     event.preventDefault();

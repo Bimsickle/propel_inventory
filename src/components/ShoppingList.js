@@ -28,35 +28,38 @@ export default function ShoppingList() {
         <div className="text-end p-3">
           <strong>Purchased</strong>
         </div>
-        <div></div>
+
         <div className="ps-3">
           <strong>Pantry</strong>
-        </div>
-        {shoppingProducts.map(function (shoppingProduct, index) {
-          return (
-            <div key={index} className="item-slot row">
-              <div className="col-6">
-                <div className="product-name">{shoppingProduct.item?.name}</div>
-                <div className="quantity">Qty {shoppingProduct.quantity}</div>
-              </div>
-              <div className="col-6 text-end">
-                <div onClick={() => itemComplete(index)}>
-                  {shoppingProduct.bought ? (
-                    <span className="material-icons-outlined details-icon">
-                      check_box
-                    </span>
-                  ) : (
-                    <span className="material-icons-outlined details-icon">
-                      check_box_outline_blank
-                    </span>
-                  )}
+          {shoppingProducts.map(function (shoppingProduct, index) {
+            return (
+              <div key={index} className="item-slot row">
+                <div className="col-6">
+                  <div className="product-name">
+                    {shoppingProduct.item?.name}
+                  </div>
+                  <div className="quantity">Qty {shoppingProduct.quantity}</div>
                 </div>
+                <div className="col-6 text-end">
+                  <div onClick={() => itemComplete(index)}>
+                    {shoppingProduct.bought ? (
+                      <span className="material-icons-outlined details-icon shopping-list-icon">
+                        check_box
+                      </span>
+                    ) : (
+                      <span className="material-icons-outlined details-icon shopping-list-icon">
+                        check_box_outline_blank
+                      </span>
+                    )}
+                  </div>
+                </div>
+                <hr />
               </div>
-            </div>
-          );
-        })}
-        <div className="ps-3">
-          <strong>Refrigerator</strong>
+            );
+          })}
+          <div className="ps-3">
+            <strong>Refrigerator</strong>
+          </div>{" "}
         </div>
       </div>
     );
