@@ -9,15 +9,17 @@ export default function Search() {
     setInputValue(event.target.value);
   }
 
+  console.log(inputValue);
+
   return (
     <div className="Search">
       <form
         className="search-bar shadow pb-3"
         onChange={handleSearchValueChange}
       >
-        <span class="material-icons-outlined">search</span>
+        <span className="material-icons-outlined">search</span>
         <input type="text" className="search-form"></input>
-        <span class="material-icons">highlight_off</span>
+        <span className="material-icons">highlight_off</span>
       </form>
     </div>
   );

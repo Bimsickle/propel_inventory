@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./AddItemOverlay.css";
 import { Link } from "react-router-dom";
-import axios from "axios";
 
 export default function AddItemOverlay() {
   let url = "http://localhost:8000/api/shopping/create-item";
@@ -50,7 +49,7 @@ export default function AddItemOverlay() {
     });
     console.log(item);
 
-    fetch("http://localhost:8000/api/shopping/create-item", {
+    fetch(url, {
       method: "POST",
       body: JSON.stringify(item),
     })
@@ -66,7 +65,10 @@ export default function AddItemOverlay() {
     <div className="AddItemOverlay">
       <header>
         <Link to="/">
-          <img src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/019/658/original/Rectangle_1.png?1635022936" />
+          <img
+            src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/019/658/original/Rectangle_1.png?1635022936"
+            alt="separator"
+          />
         </Link>
       </header>
       <form>

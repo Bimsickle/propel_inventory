@@ -1,8 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import "./HomepageNav.css";
-import { NavLink, Switch, Route } from "react-router-dom";
-import Alerts from "./Alerts";
+import { NavLink } from "react-router-dom";
 
 export default function HomepageNav() {
   return (
@@ -44,9 +42,3 @@ export default function HomepageNav() {
     </div>
   );
 }
-
-const Main = () => (
-  <Switch>
-    <Route path="/" component={Alerts}></Route>
-  </Switch>
-);

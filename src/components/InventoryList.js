@@ -8,28 +8,12 @@ export default function InventoryList() {
   let [loaded, setLoaded] = useState("location");
   let [products, setProducts] = useState([{}]);
   let url = "http://localhost:8000/api/item";
-  let [inputValue, setInputValue] = useState("");
 
   useEffect(() => {
     axios.get(url).then((response) => {
       setProducts(response.data);
     });
-  }, []);
-  console.log(products);
-
-  function addItem(event) {
-    event.preventDefault();
-    let newItem = {
-      itemname: inputValue,
-      expire: "12/02",
-      quantity: 1,
-      location: "cabinet",
-    };
-    let newItems = [...products, newItem];
-    console.log(newItems);
-    setProducts(newItems);
-    setInputValue("");
-  }
+  }, [url]);
 
   function sort(event) {
     event.preventDefault();
@@ -50,11 +34,6 @@ export default function InventoryList() {
         return a - b;
       });
     }
-  }
-
-  function handleItemChange(event) {
-    event.preventDefault();
-    setInputValue(event.target.value);
   }
 
   if (loaded === "location")

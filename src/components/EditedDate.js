@@ -1,4 +1,4 @@
-import dateFormat, { masks } from "dateformat";
+import dateFormat from "dateformat";
 
 export default function EditedDate(props) {
   const now = props.date;

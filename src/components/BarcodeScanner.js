@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import "./BarcodeScanner.css";
-import { Link } from "react-router-dom";
 import BarcodeScannerComponent from "react-webcam-barcode-scanner";
-import axios from "axios";
 
 export default function BarcodeScanner() {
   const [barcode, setBarcode] = React.useState("Not Found");

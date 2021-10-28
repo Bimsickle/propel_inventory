@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import axios from "axios";
 import "./ItemDetails.css";
 import { Link } from "react-router-dom";
 import EditedDate from "./EditedDate";
@@ -7,16 +6,11 @@ import EditedDate from "./EditedDate";
 export default function ItemDetails(props) {
   console.log(props.location.itemDetailProps);
   let allInfo = props.location.itemDetailProps.itemDetail.product;
-  console.log(allInfo);
-  let [inputValue, setInputValue] = useState("");
-  let barcode = "737628064502";
-  let apiUrl = `https://world.openfoodfacts.org/api/v0/product/${barcode}.json`;
+
   let [item, setItem] = useState("");
   let [image, setImage] = useState("");
-  let [description, setDescription] = useState("");
   let [size, setSize] = useState("");
   let [ingredients, setIngredients] = useState("");
-  let [allergy, setAllergy] = useState("");
   let [quantity, setQuantity] = useState(1);
   let [date, setDate] = useState("MM/DD/YYYY");
 
@@ -25,10 +19,8 @@ export default function ItemDetails(props) {
   function searchItem() {
     setItem(allInfo.item.name);
     setImage();
-    setDescription(allInfo.item.description);
     setIngredients(allInfo.item.ingredients);
     setQuantity(allInfo.quantity);
-    setAllergy(allInfo.item.allergy_info);
     setSize(allInfo.item.size);
     setDate(allInfo.exp_date);
   }
@@ -43,18 +35,18 @@ export default function ItemDetails(props) {
     alert("Item was deleted!");
   }
 
-  function handleItemChange(event) {
-    event.preventDefault();
-  }
   if (loaded) {
     return (
       <div className="ItemDetails">
         <header>
           <Link to="/">
-            <img src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/019/658/original/Rectangle_1.png?1635022936" />
+            <img
+              src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/019/658/original/Rectangle_1.png?1635022936"
+              alt="separator"
+            />
           </Link>
         </header>
-        <img className="item-picture" src={image} />
+        <img className="item-picture" src={image} alt="item details" />
         <div className="row">
           <div className="col-12 item-name item-details-form">{item}</div>
 

@@ -9,7 +9,7 @@ export default function ChooseInput() {
       <div className="buttons mt-3">
         <Link to="/barcode">
           <div className="icon-container">
-            <i class="material-icons-outlined">photo_camera</i>
+            <i className="material-icons-outlined">photo_camera</i>
             <div>
               Scan <br />
               Barcode
@@ -18,7 +18,7 @@ export default function ChooseInput() {
         </Link>
         <Link to="/add-manually">
           <div className="icon-container">
-            <i class="material-icons-outlined">keyboard</i>
+            <i className="material-icons-outlined">keyboard</i>
             <div>
               Enter
               <br /> Manually

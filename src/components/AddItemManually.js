@@ -1,13 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./AddItemManually.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import dateFormat, { masks } from "dateformat";
 
 export default function AddItemManually() {
-  let [inputValue, setInputValue] = useState("");
   let [item, setItem] = useState("");
-  let [image, setImage] = useState(null);
   let [size, setSize] = useState("");
   let [ingredients, setIngredients] = useState("");
   let [quantity, setQuantity] = useState(0);
@@ -93,7 +90,7 @@ export default function AddItemManually() {
   return (
     <div className="AddItemManually pt-5">
       <div className="image-container" onClick={handleImageUpload}>
-        <i class="material-icons-outlined add-photo-icon">add_a_photo</i>
+        <i className="material-icons-outlined add-photo-icon">add_a_photo</i>
         <div className="image-text">Add photos</div>
       </div>
       <form>

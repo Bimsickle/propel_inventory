@@ -1,12 +1,9 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import "./ShoppingList.css";
-import Homepage from "./Homepage";
 
 export default function ShoppingList() {
   let [shoppingProducts, setShoppingProducts] = useState([{}]);
-  let [inputValue, setInputValue] = useState("");
-  let [totalItemCount, setTotalItemCount] = useState("");
   let [loaded, setLoaded] = useState(false);
   let url = "http://localhost:8000/api/shopping/item";
 
@@ -14,17 +11,8 @@ export default function ShoppingList() {
     axios.get(url).then((response) => {
       setShoppingProducts(response.data);
     });
-  }, []);
+  }, [url]);
   console.log(shoppingProducts);
-
-  function addShoppingItem(event) {
-    event.preventDefault();
-    let newItem = { name: inputValue, quantity: 1, isSelected: false };
-    let newItems = [...shoppingProducts, newItem];
-    console.log(newItems);
-    setShoppingProducts(newItems);
-    setInputValue("");
-  }
 
   let itemComplete = (index) => {
     const newItems = [...shoppingProducts];
@@ -54,11 +42,11 @@ export default function ShoppingList() {
               <div className="col-6 text-end">
                 <div onClick={() => itemComplete(index)}>
                   {shoppingProduct.bought ? (
-                    <span class="material-icons-outlined details-icon">
+                    <span className="material-icons-outlined details-icon">
                       check_box
                     </span>
                   ) : (
-                    <span class="material-icons-outlined details-icon">
+                    <span className="material-icons-outlined details-icon">
                       check_box_outline_blank
                     </span>
                   )}

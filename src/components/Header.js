@@ -8,7 +8,7 @@ export default function Header() {
         <div className="row">
           <div className="col-6">Inventory App</div>
           <div className="col-6 setting-icon">
-            <i class="material-icons-outlined">settings</i>
+            <i className="material-icons-outlined">settings</i>
           </div>
         </div>
       </div>
