@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./ItemDetails.css";
 import { Link } from "react-router-dom";
 import EditedDate from "./EditedDate";
+import axios from "axios";
 
 export default function ItemDetails(props) {
   console.log(props.location.itemDetailProps);
@@ -13,8 +14,9 @@ export default function ItemDetails(props) {
   let [ingredients, setIngredients] = useState("");
   let [quantity, setQuantity] = useState(1);
   let [date, setDate] = useState("MM/DD/YYYY");
-
   let [loaded, setLoaded] = useState(false);
+  let url = "http://localhost:8000/api/item";
+  let shoppingListUrl = "http://localhost:8000/api/shopping/create-item";
 
   function searchItem() {
     setItem(allInfo.item.name);
@@ -27,11 +29,22 @@ export default function ItemDetails(props) {
 
   function addItemToList(event) {
     event.preventDefault();
-    alert("Item was added to list!");
+    axios
+      .post(shoppingListUrl, allInfo)
+      .then((res) => {
+        console.log(res);
+        console.log(res.data);
+        alert(`${item} was added`);
+      })
+      .catch((err) => console.log(err));
   }
 
   function deleteItem(event) {
     event.preventDefault();
+    axios
+      .delete(url)
+      .then(() => this.setState({ status: "Delete successful" }));
+
     alert("Item was deleted!");
   }
 

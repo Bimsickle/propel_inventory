@@ -7,32 +7,32 @@ export default function BarcodeScanner() {
   let url = "http://localhost:8000/api/create-item-barcode";
   let [item, setItem] = useState({
     item: {
-      name: "",
-      code: "",
-      description: "",
-      size: "",
-      ingredients: [],
-      allergy_info: "",
+      name: "string",
+      code: "978123456789",
+      description: "string",
+      size: "string",
+      ingredients: ["string"],
+      allergy_info: "string",
     },
-    quantity: 1,
-    exp_date: "2021-10-24T14:34:40.778Z",
-    location: "",
+    quantity: 0,
+    exp_date: "2021-10-29T12:44:22.475Z",
+    location: "string",
   });
 
   function scanBarcode(event) {
     event.preventDefault();
     setItem({
       item: {
-        name: "",
-        code: barcode,
-        description: "",
-        size: "",
-        ingredients: [],
-        allergy_info: "",
+        name: "string",
+        code: "978123456789",
+        description: "string",
+        size: "string",
+        ingredients: ["string"],
+        allergy_info: "string",
       },
-      quantity: 1,
-      exp_date: "2021-10-24T14:34:40.778Z",
-      location: "",
+      quantity: 0,
+      exp_date: "2021-10-29T12:44:22.475Z",
+      location: "string",
     });
     console.log(item);
 
