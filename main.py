@@ -91,7 +91,8 @@ async def create_item_inventory(shoppinglist: ShoppingList):
     raise HTTPException(400, "Something went wrong")
 
 @app.post('/api/create-item-barcode', response_model = Inventory)
-async def create_item_from_barcode_inventory(barcode:str):
+async def create_item_from_barcode_inventory(inventory: Inventory):
+    barcode = inventory.dict()['item']['code']
     json_data = retrieve_json(barcode)
     item_data = process_data(json_data)
     response = await create_item(item_data.dict())
