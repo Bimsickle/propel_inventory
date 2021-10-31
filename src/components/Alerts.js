@@ -10,7 +10,7 @@ export default function Alerts() {
 
   function load() {
     setLoaded(true);
-    let url = "http://localhost:8000/api/item";
+    let url = "http://localhost:8000/api/item/expired";
     axios.get(url).then((response) => {
       setProducts(response.data);
       console.log(products);
@@ -21,7 +21,8 @@ export default function Alerts() {
     return (
       <div className="Alerts">
         <div className="text-center alert-header">
-          You have <span className="alert-number">3</span> items expiring soon!
+          You have <span className="alert-number">{products.length}</span> items
+          expiring soon!
         </div>
 
         {products.map(function (product, index) {

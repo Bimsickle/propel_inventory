@@ -27,3 +27,30 @@
   height: 36px;
   padding: 6px 6px 6px 8px;
 }
+
+.location-checkbox {
+  font-size: 14px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.locations {
+  text-align: center;
+}
+
+.AddItemManually .details-icon {
+  padding: 0;
+}
+
+.AddItemManually .shopping-list-icon {
+  padding: 10px;
+}
+
+.location-text {
+  position: relative;
+  bottom: 6px;
+}
+
+.AddItemManually .buttons {
+  padding: 10px 20px;
+}

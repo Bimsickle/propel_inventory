@@ -103,9 +103,9 @@ export default function AddItemOverlay() {
             onChange={handleQuantityChange}
           />
 
-          <div className="col-4" onClick={addItemtoList}>
+          <div className="col-4 me-4" onClick={addItemtoList}>
             <i className="material-icons add-shopping-list-icon">add_circle</i>{" "}
-            <span className="">Add</span>
+            <span className="add-button">Add</span>
           </div>
         </div>
       </form>

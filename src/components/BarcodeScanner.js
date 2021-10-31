@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./BarcodeScanner.css";
 import BarcodeScannerComponent from "react-webcam-barcode-scanner";
 
@@ -8,30 +8,47 @@ export default function BarcodeScanner() {
   let [item, setItem] = useState({
     item: {
       name: "string",
-      code: "978123456789",
+      code: "string",
       description: "string",
       size: "string",
       ingredients: ["string"],
       allergy_info: "string",
     },
     quantity: 0,
-    exp_date: "2021-10-29T12:44:22.475Z",
+    exp_date: "2021-10-31T03:17:42.142Z",
     location: "string",
   });
 
-  function scanBarcode(event) {
-    event.preventDefault();
+  useEffect(() => {
     setItem({
       item: {
         name: "string",
-        code: "978123456789",
+        code: barcode,
         description: "string",
         size: "string",
         ingredients: ["string"],
         allergy_info: "string",
       },
       quantity: 0,
-      exp_date: "2021-10-29T12:44:22.475Z",
+      exp_date: "2021-10-31T03:17:42.142Z",
+      location: "string",
+    });
+    console.log("new value of products", item);
+  }, [barcode]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  function scanBarcode(event) {
+    event.preventDefault();
+    setItem({
+      item: {
+        name: "string",
+        code: barcode,
+        description: "string",
+        size: "string",
+        ingredients: ["string"],
+        allergy_info: "string",
+      },
+      quantity: 0,
+      exp_date: "2021-10-31T03:17:42.142Z",
       location: "string",
     });
     console.log(item);

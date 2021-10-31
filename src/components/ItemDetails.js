@@ -15,7 +15,7 @@ export default function ItemDetails(props) {
   let [quantity, setQuantity] = useState(1);
   let [date, setDate] = useState("MM/DD/YYYY");
   let [loaded, setLoaded] = useState(false);
-  let url = "http://localhost:8000/api/item";
+  //let url = "http://localhost:8000/api/item/";
   let shoppingListUrl = "http://localhost:8000/api/shopping/create-item";
 
   function searchItem() {
@@ -41,10 +41,9 @@ export default function ItemDetails(props) {
 
   function deleteItem(event) {
     event.preventDefault();
-    axios
-      .delete(url)
-      .then(() => this.setState({ status: "Delete successful" }));
-
+    //    axios
+    //     .delete(url)
+    ///    .then(() => this.setState({ status: "Delete successful" }));
     alert("Item was deleted!");
   }
 
@@ -67,7 +66,7 @@ export default function ItemDetails(props) {
           <div className="col-3 item-details-form">
             <EditedDate date={date} />
           </div>
-          <div className="col-3 item-details-form quantity me-5">
+          <div className="col-3 item-details-form quantity-form me-5">
             {quantity}
           </div>
         </div>

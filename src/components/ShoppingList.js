@@ -1,11 +1,13 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import "./ShoppingList.css";
+//import AddToInventory from "./AddToInventory";
 
 export default function ShoppingList() {
   let [shoppingProducts, setShoppingProducts] = useState([{}]);
   let [loaded, setLoaded] = useState(false);
   let url = "http://localhost:8000/api/shopping/item";
+  //let inventoryUrl = "http://localhost:8000/api/create-item/";
 
   useEffect(() => {
     axios.get(url).then((response) => {
@@ -20,7 +22,20 @@ export default function ShoppingList() {
     newItems[index].bought = !newItems[index].bought;
 
     setShoppingProducts(newItems);
+    console.log(shoppingProducts);
   };
+
+  //function addtoInventory(shoppingProduct) {
+  //  console.log(shoppingProduct);
+  ///  axios
+  //   .post(inventoryUrl, shoppingProduct)
+  //    .then((res) => {
+  //    console.log(res);
+  //     console.log(res.data);
+  //    alert(`Item was added to Inventory`);
+  //   })
+  //    .catch((err) => console.log(err));
+  //}
 
   if (loaded) {
     return (
