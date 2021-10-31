@@ -3,6 +3,8 @@ import motor.motor_asyncio
 from model import Inventory, ShoppingList
 import os
 from dotenv import load_dotenv
+from bson.objectid import ObjectId
+import datetime as dt
 
 load_dotenv('password.env')
 
@@ -64,19 +66,29 @@ async def fetch_all_items_location():
         items.append(document)
     return items
 
-# # Retrieve items and sort based on expiration date
-# async def fetch_all_items_date():
-#     items = []
-#     cursor = inventory_clt.aggregate(
-#         [
-#             {
-#                 "$sort": {"exp_date":-1}
-#             }
-#         ]
-#     )
-#     async for document in cursor:
-#         items.append(document)
-#     return items
+# Retrieve items and sort based on expiration date
+async def fetch_all_items_date():
+    items = []
+    cursor = inventory_clt.aggregate(
+        [
+            {
+                "$sort": {"exp_date":-1}
+            }
+        ]
+    )
+    async for document in cursor:
+        items.append(Inventory(**document))
+    return items
+
+# Get items which are going to be expired soon (7 days)
+async def fetch_all_items_expired():
+    current = dt.datetime.now()
+    after_7_days = current + dt.timedelta(days=7)
+    items = []
+    cursor = inventory_clt.find({'exp_date':{'$gte':current,'$lte':after_7_days}})
+    async for document in cursor:
+        items.append(Inventory(**document))
+    return items
 
 # Delete all items in collection
 async def delete_all_items():
@@ -96,4 +108,20 @@ async def fetch_all_items_shopping():
     async for document in cursor:
         items.append(ShoppingList(**document))
     return items
+
+# Delete item from inventory
+async def delete_item_inventory(id):
+    await inventory_clt.delete_one({'_id': ObjectId(id)})
+    return True
+
+# Delete item from shopping list
+async def delete_item_shopping(id):
+    await shopping_clt.delete_one({'_id': ObjectId(id)})
+    return True
+
+# Update item for shopping list
+async def update_item_shopping(id,bought):
+    await shopping_clt.update_one({'_id':ObjectId(id)},{'$set':{'bought': bought}})
+    document = await shopping_clt.find_one({"_id":id})
+    return document
 # %%

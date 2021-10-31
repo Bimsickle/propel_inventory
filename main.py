@@ -1,20 +1,25 @@
 from fastapi import FastAPI, HTTPException, File, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from model import Inventory,ShoppingList
-from barcode_scanning import read_image, scan_barcode,process_data,retrieve_json
+from barcode_scanning import process_data,retrieve_json
 
 app = FastAPI()
 
 from database import (
     delete_all_items,
+    delete_item_shopping,
     fetch_all_items,
     create_item,
     fetch_all_items_sum,
     fetch_all_items_location,
     delete_all_items,
     create_item_shopping,
-    fetch_all_items_shopping
-    # fetch_all_items_date
+    fetch_all_items_shopping,
+    delete_item_inventory,
+    delete_item_shopping,
+    update_item_shopping,
+    fetch_all_items_expired,
+    fetch_all_items_date
 )
 
 origins = ['*']
@@ -46,10 +51,15 @@ async def get_items_location_from_inventory():
     response = await fetch_all_items_location()
     return response
 
-# @app.get("/api/item/date")
-# async def get_items_date_from_inventory():
-#     response = await fetch_all_items_date()
-#     return response
+@app.get("/api/item/expired")
+async def get_expired_soon_items():
+    response = await fetch_all_items_expired()
+    return response
+
+@app.get("/api/item/date")
+async def get_items_date_from_inventory():
+    response = await fetch_all_items_date()
+    return response
 
 @app.post("/api/create-item/", response_model=Inventory)
 async def create_item_inventory(inventory: Inventory):
@@ -99,3 +109,24 @@ async def create_item_from_barcode_inventory(inventory: Inventory):
     if response:
         return response
     raise HTTPException(400, "Something went wrong")
+
+@app.delete("/api/item/{id}")
+async def delete_item_from_inventory(id):
+    response = await delete_item_inventory(id)
+    if response:
+        return "Successfully deleted item"
+    raise HTTPException(404,f"There is no item with the id {id}")
+
+@app.delete("/api/shopping/item/{id}")
+async def delete_item_from_shopping_list(id):
+    response = await delete_item_shopping(id)
+    if response:
+        return "Successfully deleted item"
+    raise HTTPException(404,f"There is no item with the id {id}")
+
+@app.put("/api/shopping/item/{id}")
+async def update_item_from_shopping_list(id:str,bought:bool):
+    response = await update_item_shopping(id,bought)
+    if response:
+        return response
+    raise HTTPException(404,f"There is no todo with the id {id}")

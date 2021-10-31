@@ -131,4 +131,5 @@ dmypy.json
 # Password text file
 ./password.txt
 test.py
+test_datebase.py
 test.html
