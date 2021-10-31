@@ -9,6 +9,7 @@ export default function AddItemManually() {
   let [ingredients, setIngredients] = useState("");
   let [quantity, setQuantity] = useState(0);
   let [date, setDate] = useState("MM/DD/YYYY");
+  let [location, setLocation] = useState("");
   let url = "http://localhost:8000/api/create-item/";
   let [products, setProducts] = useState({
     item: {
@@ -36,10 +37,10 @@ export default function AddItemManually() {
       },
       quantity: quantity,
       exp_date: `${date}T14:34:40.778Z`,
-      location: "string",
+      location: location,
     });
     console.log("new value of products", products);
-  }, [item, date, quantity, ingredients, size]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [item, date, quantity, ingredients, size, location]); // eslint-disable-line react-hooks/exhaustive-deps
 
   function addItemApi(event) {
     event.preventDefault();
@@ -54,7 +55,7 @@ export default function AddItemManually() {
       },
       quantity: quantity,
       exp_date: `${date}T14:34:40.778Z`,
-      location: "string",
+      location: location,
     });
     console.log(products);
 
@@ -67,19 +68,6 @@ export default function AddItemManually() {
       })
       .catch((err) => console.log(err));
   }
-
-  /// fetch("http://localhost:8000/api/create-item/", {
-  //  method: "POST",
-  //   body: JSON.stringify(products),
-  //  })
-  //    .then(function (respones) {
-  //   return respones.json();
-  //     })
-  //    .then(function (data) {
-  //      console.log(data);
-  //     alert(`${item} was added`);
-  //    });
-  // }
 
   function handleItemChange(event) {
     event.preventDefault();
@@ -105,6 +93,19 @@ export default function AddItemManually() {
   function handleImageUpload(event) {
     event.preventDefault();
     alert("Hello from Image Upload");
+  }
+
+  function handleLocationFridge(event) {
+    event.preventDefault();
+    setLocation("refrigerator");
+  }
+  function handleLocationPantry(event) {
+    event.preventDefault();
+    setLocation("pantry");
+  }
+  function handleLocationFreezer(event) {
+    event.preventDefault();
+    setLocation("freezer");
   }
 
   return (
@@ -147,25 +148,35 @@ export default function AddItemManually() {
           />
         </div>
       </form>
-      <span>
-        {" "}
-        <i className="material-icons-outlined details-icon shopping-list-icon">
-          check_box
-        </i>{" "}
-        Pantry{" "}
-      </span>
-      <span>
-        <i className="material-icons-outlined details-icon shopping-list-icon">
-          check_box_outline_blank
-        </i>
-        Refrigerator
-      </span>
-      <span>
-        <i className="material-icons-outlined details-icon shopping-list-icon">
-          check_box_outline_blank
-        </i>
-        Freezer
-      </span>
+      <div className="locations">
+        <span className="location-checkbox">
+          <i
+            className="material-icons-outlined details-icon shopping-list-icon"
+            onClick={handleLocationFridge}
+          >
+            check_box_outline_blank
+          </i>
+          <span className="location-text">Refrigerator</span>
+        </span>
+        <span className="location-checkbox">
+          <i
+            className="material-icons-outlined details-icon shopping-list-icon"
+            onClick={handleLocationPantry}
+          >
+            check_box_outline_blank
+          </i>
+          <span className="location-text">Pantry</span>
+        </span>
+        <span className="location-checkbox">
+          <i
+            className="material-icons-outlined details-icon shopping-list-icon"
+            onClick={handleLocationFreezer}
+          >
+            check_box_outline_blank
+          </i>
+          <span className="location-text">Freezer</span>
+        </span>
+      </div>
       <div className="buttons m-3">
         <div className="active-button add-item-button" onClick={addItemApi}>
           ADD ITEM

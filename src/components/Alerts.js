@@ -21,7 +21,8 @@ export default function Alerts() {
     return (
       <div className="Alerts">
         <div className="text-center alert-header">
-          You have <span className="alert-number">3</span> items expiring soon!
+          You have <span className="alert-number">{products.length}</span> items
+          expiring soon!
         </div>
 
         {products.map(function (product, index) {

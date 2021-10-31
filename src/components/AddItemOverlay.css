@@ -36,6 +36,7 @@
   top: 100px;
   left: 79px;
   margin-top: 42px;
+  margin-left: 75px;
 }
 
 .add-quantity {
@@ -43,5 +44,12 @@
   height: 33px;
   top: 140px;
   left: 79px;
-  margin-left: 90px;
+  margin-left: 86px;
+}
+
+.add-button {
+  font-size: 12px;
+
+  display: block;
+  margin: -27px 0 0px 38px;
 }
