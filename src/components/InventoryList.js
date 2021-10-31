@@ -19,20 +19,15 @@ export default function InventoryList() {
     event.preventDefault();
     if (event.target.value === "expiration date") {
       setLoaded("expiration date");
-      products.sort(byDate);
-
-      function byDate(a, b) {
-        return new Date(a.exp_date).valueOf() - new Date(b.exp_date).valueOf();
-      }
+      axios.get("http://localhost:8000/api/item/date").then((response) => {
+        setProducts(response.data);
+      });
     }
     if (event.target.value === "location") {
       setLoaded("location");
     }
     if (event.target.value === "low in stock") {
       setLoaded("low in stock");
-      products.sort(function (a, b) {
-        return a - b;
-      });
     }
   }
 
