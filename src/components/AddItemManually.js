@@ -147,6 +147,25 @@ export default function AddItemManually() {
           />
         </div>
       </form>
+      <span>
+        {" "}
+        <i className="material-icons-outlined details-icon shopping-list-icon">
+          check_box
+        </i>{" "}
+        Pantry{" "}
+      </span>
+      <span>
+        <i className="material-icons-outlined details-icon shopping-list-icon">
+          check_box_outline_blank
+        </i>
+        Refrigerator
+      </span>
+      <span>
+        <i className="material-icons-outlined details-icon shopping-list-icon">
+          check_box_outline_blank
+        </i>
+        Freezer
+      </span>
       <div className="buttons m-3">
         <div className="active-button add-item-button" onClick={addItemApi}>
           ADD ITEM

@@ -37,10 +37,8 @@
   margin-bottom: 22px;
   border-radius: 10px;
 }
-
-.quantity {
+.quantity-form {
   width: 80px;
-  padding: 9px;
 }
 
 .bin-icon {

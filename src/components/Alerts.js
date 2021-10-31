@@ -10,7 +10,7 @@ export default function Alerts() {
 
   function load() {
     setLoaded(true);
-    let url = "http://localhost:8000/api/item";
+    let url = "http://localhost:8000/api/item/expired";
     axios.get(url).then((response) => {
       setProducts(response.data);
       console.log(products);
