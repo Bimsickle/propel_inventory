@@ -44,7 +44,7 @@ async def fetch_all_items_sum():
                     }
             },
             {
-                "$sort": {"quantity":-1}
+                "$sort": {"quantity":1}
             }
         ]
     )
