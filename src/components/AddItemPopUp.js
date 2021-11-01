@@ -13,7 +13,7 @@ export default function AddItemPopUp() {
           <div className="active-button additem-button">INVENTORY</div>
         </Link>
         <Link to="/add-to-list">
-          <div className="active-button additem-button">LIST</div>
+          <div className="active-button additem-button">SHOPPING LIST</div>
         </Link>
       </div>
     </div>

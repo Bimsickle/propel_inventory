@@ -25,7 +25,7 @@ export default function Homepage() {
               className="inactive homepage-button"
               onClick={showShoppingList}
             >
-              LIST
+              SHOPPING LIST
             </div>
           </div>
           <InventoryList />
@@ -44,7 +44,7 @@ export default function Homepage() {
               INVENTORY
             </div>
 
-            <div className="active-button homepage-button">LIST</div>
+            <div className="active-button homepage-button">SHOPPING LIST</div>
           </div>
           <ShoppingList />
         </section>
