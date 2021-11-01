@@ -72,9 +72,6 @@ export default function ShoppingList() {
               </div>
             );
           })}
-          <div className="ps-3">
-            <strong>Refrigerator</strong>
-          </div>{" "}
         </div>
       </div>
     );
