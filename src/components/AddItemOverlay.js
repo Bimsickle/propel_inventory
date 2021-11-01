@@ -98,7 +98,7 @@ export default function AddItemOverlay() {
         <div className="row">
           <input
             type="text"
-            placeholder="- +"
+            placeholder="Quantity"
             className="item-details-form add-quantity col-4"
             onChange={handleQuantityChange}
           />

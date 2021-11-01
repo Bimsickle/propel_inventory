@@ -76,6 +76,9 @@ export default function InventoryList() {
         <div className="ps-3">
           <strong>Refrigerator</strong>
         </div>
+        <div className="ps-3">
+          <strong>Freezer</strong>
+        </div>
       </div>
     );
 

@@ -45,7 +45,6 @@ export default function ShoppingList() {
         </div>
 
         <div className="ps-3">
-          <strong>Pantry</strong>
           {shoppingProducts.map(function (shoppingProduct, index) {
             return (
               <div key={index} className="item-slot row">
