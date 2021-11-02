@@ -9,7 +9,7 @@ export default function ItemDetails(props) {
   let allInfo = props.location.itemDetailProps.itemDetail.product;
 
   let [item, setItem] = useState("");
-  let [image, setImage] = useState("");
+  // let [image, setImage] = useState("");
   let [size, setSize] = useState("");
   let [ingredients, setIngredients] = useState("");
   let [quantity, setQuantity] = useState(1);
@@ -20,7 +20,7 @@ export default function ItemDetails(props) {
 
   function searchItem() {
     setItem(allInfo.item.name);
-    setImage();
+    //  setImage();
     setIngredients(allInfo.item.ingredients);
     setQuantity(allInfo.quantity);
     setSize(allInfo.item.size);
@@ -58,7 +58,14 @@ export default function ItemDetails(props) {
             />
           </Link>
         </header>
-        <img className="item-picture" src={image} alt="item details" />
+        <div className="pt-5">
+          <div className="image-container">
+            <i className="material-icons-outlined add-photo-icon">
+              add_a_photo
+            </i>
+            <div className="image-text">Add photos</div>
+          </div>
+        </div>
         <div className="row">
           <div className="col-12 item-name item-details-form">{item}</div>
 

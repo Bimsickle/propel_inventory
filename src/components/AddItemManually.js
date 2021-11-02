@@ -6,9 +6,9 @@ import axios from "axios";
 export default function AddItemManually() {
   let [item, setItem] = useState("");
   let [size, setSize] = useState("");
-  let [ingredients, setIngredients] = useState("");
+  let [allergy, setAllergy] = useState("");
   let [quantity, setQuantity] = useState(0);
-  let [date, setDate] = useState("MM/DD/YYYY");
+  let [date, setDate] = useState("YYYY-MM-DD");
   let [location, setLocation] = useState("");
   let url = "http://localhost:8000/api/create-item/";
   let [products, setProducts] = useState({
@@ -33,14 +33,14 @@ export default function AddItemManually() {
         description: "string",
         size: size,
         ingredients: ["string"],
-        allergy_info: ingredients,
+        allergy_info: allergy,
       },
       quantity: quantity,
       exp_date: `${date}T14:34:40.778Z`,
       location: location,
     });
     console.log("new value of products", products);
-  }, [item, date, quantity, ingredients, size, location]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [item, date, quantity, allergy, size, location]); // eslint-disable-line react-hooks/exhaustive-deps
 
   function addItemApi(event) {
     event.preventDefault();
@@ -51,7 +51,7 @@ export default function AddItemManually() {
         description: "string",
         size: size,
         ingredients: ["string"],
-        allergy_info: ingredients,
+        allergy_info: allergy,
       },
       quantity: quantity,
       exp_date: `${date}T14:34:40.778Z`,
@@ -87,7 +87,7 @@ export default function AddItemManually() {
   }
   function handleAllergenChange(event) {
     event.preventDefault();
-    setIngredients(event.target.value);
+    setAllergy(event.target.value);
   }
 
   function handleImageUpload(event) {

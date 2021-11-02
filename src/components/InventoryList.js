@@ -28,6 +28,9 @@ export default function InventoryList() {
     }
     if (event.target.value === "low in stock") {
       setLoaded("low in stock");
+      axios.get("http://localhost:8000/api/item/sum").then((response) => {
+        setProducts(response.data);
+      });
     }
   }
 
@@ -73,6 +76,9 @@ export default function InventoryList() {
         <div className="ps-3">
           <strong>Refrigerator</strong>
         </div>
+        <div className="ps-3">
+          <strong>Freezer</strong>
+        </div>
       </div>
     );
 
@@ -94,7 +100,7 @@ export default function InventoryList() {
               return (
                 <div key={index} className="item-slot row">
                   <div className="col-6">
-                    <div className="product-name">{product.item.name}</div>
+                    <div className="product-name">{product._id}</div>
                     <div className="quantity">Qty {product.quantity}</div>
                   </div>
                   <div className="col-6 text-end details-icon">
@@ -134,7 +140,7 @@ export default function InventoryList() {
               return (
                 <div key={index} className="item-slot row">
                   <div className="col-6">
-                    <div className="product-name">{product.item.name}</div>
+                    <div className="product-name">{product.item?.name}</div>
                     <div className="quantity">Qty {product.quantity}</div>
                   </div>
                   <div className="col-6 text-end details-icon">
