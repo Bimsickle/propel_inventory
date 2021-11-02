@@ -13,13 +13,14 @@ from database import (
     fetch_all_items_sum,
     fetch_all_items_location,
     delete_all_items,
+    delete_all_items_shopping,
     create_item_shopping,
     fetch_all_items_shopping,
     delete_item_inventory,
     delete_item_shopping,
     update_item_shopping,
     fetch_all_items_expired,
-    fetch_all_items_date
+    fetch_all_items_date,
 )
 
 origins = ['*']
@@ -86,6 +87,13 @@ async def delete_all_items_inventory():
     response = await delete_all_items()
     if response:
         return "Successfully deleted all items in Inventory"
+    raise HTTPException(404,f"Something went wrong.")
+
+@app.delete("/api/delete-all-shopping")
+async def delete_all_items_inventory():
+    response = await delete_all_items_shopping()
+    if response:
+        return "Successfully deleted all items in Shopping List"
     raise HTTPException(404,f"Something went wrong.")
 
 @app.get("/api/shopping/item")

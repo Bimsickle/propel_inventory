@@ -90,9 +90,14 @@ async def fetch_all_items_expired():
         items.append(Inventory(**document))
     return items
 
-# Delete all items in collection
+# Delete all items in inventory
 async def delete_all_items():
     inventory_clt.delete_many({})
+    return True
+
+# Delete all items in shopping list
+async def delete_all_items_shopping():
+    shopping_clt.delete_many({})
     return True
 
 # Add new item into the shopping list
